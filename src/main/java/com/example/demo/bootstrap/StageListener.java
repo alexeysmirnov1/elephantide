@@ -1,6 +1,6 @@
 package com.example.demo.bootstrap;
 
-import com.example.demo.ide.UI.Scenes.Ui;
+import com.example.demo.ide.UI.Scenes.Welcome.Load;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
@@ -24,7 +24,7 @@ public class StageListener implements ApplicationListener<StageReadyEvent> {
     @Override
     public void onApplicationEvent(StageReadyEvent stageReadyEvent) {
         Stage stage = stageReadyEvent.getStage();
-        stage.setScene(this.applicationContext.getBean(Ui.class).load());
+        stage.setScene(this.applicationContext.getBean(Load.class).load());
         stage.setTitle(this.applicationTitle);
         stage.show();
     }

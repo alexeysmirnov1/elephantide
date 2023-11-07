@@ -1,4 +1,4 @@
-package com.example.demo.ide.UI.Scenes;
+package com.example.demo.ide.UI.Scenes.Project;
 
 import com.example.demo.ide.UI.Scene;
 import org.springframework.beans.factory.annotation.Value;
@@ -6,10 +6,10 @@ import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Component;
 
 @Component
-public class Editor extends Scene {
-    public Editor(@Value("classpath:/view/editor.fxml") Resource resource) {
+public class Vcs extends Scene {
+    public Vcs(@Value("classpath:/view/project/vcs.fxml") Resource resource) {
         this.fxml = resource;
-        this.width = 900;
-        this.height = 500;
+        this.width = 1000;
+        this.height = 700;
     }
 }
