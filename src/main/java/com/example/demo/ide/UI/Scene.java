@@ -24,11 +24,20 @@ public class Scene {
             FXMLLoader fxmlLoader = new FXMLLoader(url);
             fxmlLoader.setControllerFactory(this.context::getBean);
             Parent root = fxmlLoader.load();
-            return new javafx.scene.Scene(root, this.width, this.height);
+
+            javafx.scene.Scene scene = new javafx.scene.Scene(root, this.width, this.height);
+
+            this.afterCreating(scene);
+
+            return scene;
         } catch (
             IOException e) {
             e.printStackTrace();
             return null;
         }
+    }
+
+    public void afterCreating(javafx.scene.Scene scene) {
+
     }
 }

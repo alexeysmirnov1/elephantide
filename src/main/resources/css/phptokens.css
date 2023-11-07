@@ -1,0 +1,55 @@
+.default {
+    -fx-fill: #FFFFFF;
+}
+
+.php-tags {
+    -fx-fill: #F92A3E;
+}
+
+.php-namespace {
+    -fx-fill: #00BCAF;
+}
+
+.php-included-classes {
+    -fx-fill: #00BCAF;
+}
+
+.php-class {
+    -fx-fill: #00BCAF;
+}
+
+.php-extends-class {
+    -fx-fill: #00BCAF;
+}
+
+.php-implemented-interfaces {
+    -fx-fill: #00BCAF;
+}
+
+.php-keyword {
+    -fx-fill: #F05C5C;
+}
+
+.php-modificator {
+    -fx-fill: #F05C5C;
+}
+
+.php-type {
+    -fx-fill: #F05C5C;
+}
+
+.php-string-vars {
+    -fx-fill: #00DB7C;
+}
+
+.php-numeric-vars {
+    -fx-fill: #008DCA;
+}
+
+.php-functions {
+    -fx-fill: #00AEFB;
+}
+
+.php-methods {
+    -fx-fill: #00AEFB;
+}

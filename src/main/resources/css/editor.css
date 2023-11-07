@@ -1,0 +1,7 @@
+.editor {
+    -fx-font-family: Consolas;
+    -fx-font-size: 18;
+    -fx-background-color: #999999;
+    -fx-text-fill: #FFFFFF;
+    -fx-highlight-fill: #00FF00;
+}
