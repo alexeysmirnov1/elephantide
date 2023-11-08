@@ -1,4 +1,4 @@
-package com.example.demo.ide.Infrastructure.Controllers.Welcome;
+package com.example.demo.ide.Infrastructure.Controllers.Starting;
 
 import com.example.demo.ide.Infrastructure.Controllers.Controller;
 import com.example.demo.ide.UI.Scenes.Project.Choose;

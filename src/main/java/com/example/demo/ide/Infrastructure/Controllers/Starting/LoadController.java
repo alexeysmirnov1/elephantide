@@ -1,8 +1,8 @@
-package com.example.demo.ide.Infrastructure.Controllers.Welcome;
+package com.example.demo.ide.Infrastructure.Controllers.Starting;
 
 import com.example.demo.ide.Application.Loading.LoadApplication;
 import com.example.demo.ide.Infrastructure.Controllers.Controller;
-import com.example.demo.ide.UI.Scenes.Welcome.Fork;
+import com.example.demo.ide.UI.Scenes.Starting.Fork;
 import javafx.fxml.FXML;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

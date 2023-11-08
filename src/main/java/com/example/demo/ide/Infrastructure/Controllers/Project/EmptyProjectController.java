@@ -4,7 +4,7 @@ import com.example.demo.ide.Domain.Project.Entities.Project;
 import com.example.demo.ide.Domain.Project.Factories.ProjectFactory;
 import com.example.demo.ide.Infrastructure.Controllers.Controller;
 import com.example.demo.ide.UI.Scenes.Editor.Editor;
-import com.example.demo.ide.UI.Scenes.Welcome.Fork;
+import com.example.demo.ide.UI.Scenes.Starting.Fork;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
