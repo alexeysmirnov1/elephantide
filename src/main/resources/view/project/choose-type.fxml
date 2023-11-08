@@ -1,27 +1,134 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.*?>
+<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
 <BorderPane prefHeight="700.0" prefWidth="1000.0" styleClass="base" stylesheets="@../../css/starting.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.ide.Infrastructure.Controllers.Project.ChooseTypeController">
    <center>
-      <VBox alignment="CENTER">
+      <VBox alignment="CENTER" spacing="20.0" BorderPane.alignment="CENTER">
          <children>
-            <HBox prefHeight="100.0" prefWidth="200.0" />
-            <Button mnemonicParsing="false" onAction="#createEmptyProject" text="empty" />
-            <Button mnemonicParsing="false" onAction="#createComposerPackage" text="composer" />
-            <Button mnemonicParsing="false" onAction="#createLaraveProject" text="laravel" />
-            <Button mnemonicParsing="false" onAction="#createFromVCS" text="vcs" />
+            <HBox alignment="CENTER" maxHeight="120.0" maxWidth="400.0" onMouseClicked="#createEmptyProject" prefHeight="120.0" prefWidth="200.0" spacing="30.0" styleClass="project-type" VBox.vgrow="NEVER">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <children>
+                  <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../images/empty_project.png" />
+                     </image>
+                  </ImageView>
+                  <VBox alignment="CENTER_LEFT" fillWidth="false" prefHeight="120.0" prefWidth="738.0" HBox.hgrow="SOMETIMES">
+                     <children>
+                        <Label text="Empty project" textFill="WHITE">
+                           <font>
+                              <Font name="JetBrains Mono Regular" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label text="Create new empty project" textFill="#5e5e5e" />
+                     </children>
+                  </VBox>
+               </children>
+               <padding>
+                  <Insets left="30.0" />
+               </padding>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="310.0" layoutY="177.0" maxHeight="120.0" maxWidth="400.0" onMouseClicked="#createComposerPackage" prefHeight="120.0" prefWidth="200.0" spacing="30.0" styleClass="project-type">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <children>
+                  <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../images/composer_logo.png" />
+                     </image>
+                  </ImageView>
+                  <VBox alignment="CENTER_LEFT" fillWidth="false" prefHeight="120.0" prefWidth="738.0" HBox.hgrow="SOMETIMES">
+                     <children>
+                        <Label text="Composer package" textFill="WHITE">
+                           <font>
+                              <Font name="JetBrains Mono Regular" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label text="For package development" textFill="#5e5e5e" VBox.vgrow="ALWAYS" />
+                     </children>
+                  </VBox>
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="30.0" right="10.0" top="10.0" />
+               </padding>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="310.0" layoutY="269.0" maxHeight="120.0" maxWidth="400.0" onMouseClicked="#createLaraveProject" prefHeight="120.0" prefWidth="200.0" spacing="30.0" styleClass="project-type">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <children>
+                  <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../images/laravel_project.png" />
+                     </image>
+                  </ImageView>
+                  <VBox alignment="CENTER_LEFT" fillWidth="false" prefHeight="120.0" prefWidth="738.0" HBox.hgrow="SOMETIMES">
+                     <children>
+                        <Label text="Laravel project" textFill="WHITE">
+                           <font>
+                              <Font name="JetBrains Mono Regular" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label text="Create new laravel project" textFill="#5e5e5e" VBox.vgrow="ALWAYS" />
+                     </children>
+                  </VBox>
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="30.0" right="10.0" top="10.0" />
+               </padding>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="310.0" layoutY="427.0" maxHeight="120.0" maxWidth="400.0" onMouseClicked="#createFromVCS" prefHeight="120.0" prefWidth="200.0" spacing="30.0" styleClass="project-type">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <children>
+                  <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../images/from_vcs.png" />
+                     </image>
+                  </ImageView>
+                  <VBox alignment="CENTER_LEFT" fillWidth="false" prefHeight="120.0" prefWidth="738.0" HBox.hgrow="SOMETIMES">
+                     <children>
+                        <Label text="From VCS" textFill="WHITE">
+                           <font>
+                              <Font name="JetBrains Mono Regular" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label text="Download project from VCS" textFill="#5e5e5e" VBox.vgrow="ALWAYS">
+                           <font>
+                              <Font name="JetBrains Mono Regular" size="13.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="30.0" right="10.0" top="10.0" />
+               </padding>
+            </HBox>
          </children>
       </VBox>
    </center>
    <bottom>
       <HBox BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" onAction="#comeBack" text="Back" />
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#comeBack" text="Back" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
          </children>
          <padding>
             <Insets bottom="20.0" left="20.0" top="20.0" />
@@ -31,7 +138,7 @@
    <top>
       <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Label text="New Project" textFill="#00db7c">
+            <Label text="New Project" textFill="#00db7c" HBox.hgrow="ALWAYS">
                <font>
                   <Font name="JetBrains Mono Regular" size="16.0" />
                </font>

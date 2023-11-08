@@ -23,7 +23,7 @@ public class EditorController extends Controller {
 
     @FXML
     public void initialize() {
-        this.openedFile = new File(Paths.get("").toAbsolutePath() + "\\project\\example.php");
+        this.openedFile = new File(Paths.get("").toAbsolutePath() + "/project/example.php");
 //        this.openedFile = new File(Paths.get("").toAbsolutePath() + "\\project\\short-example.php");
         this.updateStyledContentOpenedFile();
     }
