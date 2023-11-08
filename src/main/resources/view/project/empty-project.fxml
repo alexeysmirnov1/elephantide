@@ -5,100 +5,57 @@
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.paint.*?>
-<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: #00141E;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.ide.Infrastructure.Controllers.Project.EmptyProjectController">
-   <children>
-      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="50.0" prefWidth="600.0" text="New Empty Project" textFill="#00db7c">
-         <font>
-            <Font name="Inter Regular" size="16.0" />
-         </font>
-         <effect>
-            <Shadow blurType="ONE_PASS_BOX" height="4.0" radius="1.5" width="4.0">
-               <color>
-                  <Color green="0.8588235378265381" blue="0.48627451062202454" />
-               </color>
-            </Shadow>
-         </effect>
-      </Label>
-      <Ellipse fill="#f05c5c" layoutX="576.0" layoutY="25.0" radiusX="10.0" radiusY="10.0" stroke="BLACK" strokeType="INSIDE" />
-      <FlowPane columnHalignment="CENTER" layoutX="134.0" layoutY="50.0" prefHeight="418.0" prefWidth="350.0" vgap="10.0">
+<BorderPane prefHeight="700.0" prefWidth="1000.0" styleClass="base" stylesheets="@../../css/starting.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.ide.Infrastructure.Controllers.Project.EmptyProjectController">
+   <top>
+      <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <HBox alignment="CENTER" prefHeight="50.0" prefWidth="349.0">
-               <children>
-                  <Label alignment="CENTER" prefHeight="50.0" text="Project name:" textFill="WHITE">
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin>
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                     <padding>
-                        <Insets right="10.0" />
-                     </padding>
-                  </Label>
-                  <TextField fx:id="name" alignment="TOP_LEFT" nodeOrientation="LEFT_TO_RIGHT" onKeyTyped="#validate" HBox.hgrow="ALWAYS" />
-               </children>
-            </HBox>
-            <HBox prefHeight="50.0" prefWidth="349.0">
-               <children>
-                  <Label prefHeight="50.0" text="Location:" textFill="WHITE">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                     <padding>
-                        <Insets right="10.0" />
-                     </padding>
-                  </Label>
-                  <StackPane prefHeight="150.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
-                     <children>
-                        <TextField fx:id="path" alignment="TOP_LEFT" editable="false" nodeOrientation="LEFT_TO_RIGHT" onInputMethodTextChanged="#validate" />
-                        <Circle fill="WHITE" onMouseClicked="#openFolderLocator" radius="10.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" StackPane.alignment="CENTER_RIGHT">
-                           <StackPane.margin>
-                              <Insets right="10.0" />
-                           </StackPane.margin>
-                        </Circle>
-                     </children>
-                  </StackPane>
-               </children>
-            </HBox>
-            <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="200.0">
-               <children>
-                  <Label text="Add composer:" textFill="WHITE">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                     <padding>
-                        <Insets right="10.0" />
-                     </padding>
-                  </Label>
-                  <CheckBox fx:id="composer" alignment="TOP_LEFT" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" />
-               </children>
-            </HBox>
-            <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="200.0">
-               <children>
-                  <Label text="Create git repository: " textFill="WHITE">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                     <padding>
-                        <Insets right="10.0" />
-                     </padding>
-                  </Label>
-                  <CheckBox fx:id="git" mnemonicParsing="false" />
-               </children>
-            </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <Button mnemonicParsing="false" onAction="#comeBack" text="Back" />
-                  <Button fx:id="createButton" mnemonicParsing="false" onAction="#create" text="Create" />
-               </children>
-            </HBox>
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="50.0" text="New Empty Project" textFill="#00db7c">
+               <font>
+                  <Font name="Inter Regular" size="16.0" />
+               </font>
+               <effect>
+                  <Shadow blurType="ONE_PASS_BOX" height="4.0" radius="1.5" width="4.0">
+                     <color>
+                        <Color green="0.8588235378265381" blue="0.48627451062202454" />
+                     </color>
+                  </Shadow>
+               </effect>
+            </Label>
+         </children>
+      </HBox>
+   </top>
+   <bottom>
+      <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="20.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="Back" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font></Button>
+            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="Next" textFill="#00db7c">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
          </children>
          <padding>
-            <Insets top="10.0" />
-         </padding>
-      </FlowPane>
-   </children>
-</AnchorPane>
+            <Insets right="300.0" />
+         </padding></HBox>
+   </bottom>
+   <center>
+      <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER" maxHeight="50.0" maxWidth="400.0" prefHeight="50.0" prefWidth="400.0" spacing="10.0">
+               <children>
+                  <Label text="Project name:" textFill="WHITE">
+                     <font>
+                        <Font name="JetBrains Mono Regular" size="16.0" />
+                     </font>
+                  </Label>
+                  <TextField HBox.hgrow="ALWAYS" />
+               </children>
+            </HBox>
+         </children></VBox>
+   </center>
+</BorderPane>
