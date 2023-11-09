@@ -96,6 +96,7 @@
                         <CheckBox fx:id="git" mnemonicParsing="false" />
                     </children>
                 </HBox>
-            </children></VBox>
+            </children>
+        </VBox>
     </center>
 </BorderPane>
