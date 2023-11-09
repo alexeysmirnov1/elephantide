@@ -16,3 +16,9 @@
     -fx-border-style: dashed;
     -fx-background-color: transparent;
 }
+
+.input {
+    -fx-background-color: #D9D9D922;
+    -fx-border-color: #FFFFFF33;
+    -fx-border-radius: 5;
+}
