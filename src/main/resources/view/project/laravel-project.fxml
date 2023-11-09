@@ -103,7 +103,7 @@
                         <Font name="JetBrains Mono Regular" size="16.0" />
                      </font>
                   </Label>
-                  <ChoiceBox prefWidth="150.0" />
+                  <ChoiceBox fx:id="version" prefWidth="150.0" />
                </children>
             </HBox>
          </children></VBox>

@@ -4,6 +4,7 @@ import com.example.demo.ide.Infrastructure.Controllers.Controller;
 import com.example.demo.ide.UI.Scenes.Starting.Fork;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import org.springframework.stereotype.Component;
 
@@ -17,6 +18,18 @@ public class LaravelProjectController extends Controller {
 
     @FXML
     public Button createButton;
+
+    @FXML
+    public ChoiceBox<String> version;
+
+    public void initialize() {
+        this.createButton.setDisable(true);
+
+        this.version.getItems().add("v10.0");
+        this.version.getItems().add("v9.0");
+        this.version.getItems().add("v8.0");
+        this.version.setValue("v10.0");
+    }
 
     @FXML
     public void comeBack() {
