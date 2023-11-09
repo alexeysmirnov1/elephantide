@@ -1,10 +1,101 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.demo.ide.Infrastructure.Controllers.Project.ComposerPackageController"
-            prefHeight="400.0" prefWidth="600.0">
-
-</AnchorPane>
+<BorderPane prefHeight="700.0" prefWidth="1000.0" styleClass="base" stylesheets="@../../css/starting.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.ide.Infrastructure.Controllers.Project.ComposerPackageController">
+    <top>
+        <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <children>
+                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="50.0" text="New Composer Package" textFill="#00db7c">
+                    <font>
+                        <Font name="Inter Regular" size="16.0" />
+                    </font>
+                    <effect>
+                        <Shadow blurType="ONE_PASS_BOX" height="4.0" radius="1.5" width="4.0">
+                            <color>
+                                <Color green="0.8588235378265381" blue="0.48627451062202454" />
+                            </color>
+                        </Shadow>
+                    </effect>
+                </Label>
+            </children>
+        </HBox>
+    </top>
+    <bottom>
+        <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="20.0" BorderPane.alignment="CENTER">
+            <children>
+                <Button mnemonicParsing="false" onAction="#comeBack" prefHeight="50.0" prefWidth="100.0" text="Back" textFill="WHITE">
+                    <font>
+                        <Font size="20.0" />
+                    </font></Button>
+                <Button fx:id="createButton" mnemonicParsing="false" onAction="#create" prefHeight="50.0" prefWidth="100.0" text="Next" textFill="#00db7c">
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+                </Button>
+            </children>
+            <padding>
+                <Insets right="300.0" />
+            </padding>
+        </HBox>
+    </bottom>
+    <center>
+        <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+            <children>
+                <HBox alignment="CENTER" maxHeight="50.0" maxWidth="400.0" prefHeight="50.0" prefWidth="400.0" spacing="10.0">
+                    <children>
+                        <Label text="Project name:" textFill="WHITE">
+                            <font>
+                                <Font name="JetBrains Mono Regular" size="16.0" />
+                            </font>
+                        </Label>
+                        <TextField fx:id="name" onKeyTyped="#validate" styleClass="input" HBox.hgrow="ALWAYS">
+                            <font>
+                                <Font size="16.0" />
+                            </font></TextField>
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER" layoutX="310.0" layoutY="10.0" maxHeight="50.0" maxWidth="400.0" prefHeight="50.0" prefWidth="400.0" spacing="10.0">
+                    <children>
+                        <Label text="Location:" textFill="WHITE">
+                            <font>
+                                <Font name="JetBrains Mono Regular" size="16.0" />
+                            </font>
+                        </Label>
+                        <StackPane prefHeight="150.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                            <children>
+                                <TextField fx:id="path" styleClass="input">
+                                    <font>
+                                        <Font size="16.0" />
+                                    </font></TextField>
+                                <ImageView fitHeight="22.0" fitWidth="22.0" onMouseClicked="#openFolderLocator" pickOnBounds="true" preserveRatio="true" StackPane.alignment="CENTER_RIGHT">
+                                    <image>
+                                        <Image url="@../../images/open_folder.png" />
+                                    </image>
+                                    <StackPane.margin>
+                                        <Insets right="8.0" />
+                                    </StackPane.margin>
+                                </ImageView>
+                            </children>
+                        </StackPane>
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER_LEFT" layoutX="310.0" layoutY="110.0" maxHeight="50.0" maxWidth="400.0" prefHeight="50.0" prefWidth="400.0" spacing="10.0">
+                    <children>
+                        <Label text="Create git repository:" textFill="WHITE">
+                            <font>
+                                <Font name="JetBrains Mono Regular" size="16.0" />
+                            </font>
+                        </Label>
+                        <CheckBox fx:id="git" mnemonicParsing="false" />
+                    </children>
+                </HBox>
+            </children></VBox>
+    </center>
+</BorderPane>
