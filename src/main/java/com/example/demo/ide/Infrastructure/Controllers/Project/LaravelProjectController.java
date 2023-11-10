@@ -6,7 +6,10 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
+import javafx.stage.DirectoryChooser;
 import org.springframework.stereotype.Component;
+
+import java.io.File;
 
 @Component
 public class LaravelProjectController extends Controller {
@@ -38,7 +41,22 @@ public class LaravelProjectController extends Controller {
 
     public void create() {}
 
-    public void validate() {}
+    public void validate() {
+        boolean validName = !this.name.getText().isEmpty();
+        boolean validPath = !this.path.getText().isEmpty();
 
-    public void openFolderLocator() {}
+        if (validName && validPath) {
+            this.createButton.setDisable(false);
+        }
+    }
+
+    public void openFolderLocator() {
+        DirectoryChooser loader = new DirectoryChooser();
+        File directory = loader.showDialog(this.stage().getScene().getWindow());
+
+        if (directory != null) {
+            this.path.setText(directory.getPath());
+            this.validate();
+        }
+    }
 }
