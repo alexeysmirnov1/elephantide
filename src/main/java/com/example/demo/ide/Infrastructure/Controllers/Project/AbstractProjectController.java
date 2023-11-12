@@ -28,7 +28,6 @@ abstract public class AbstractProjectController extends Controller {
         this.createButton.setDisable(true);
     }
 
-    @FXML
     abstract protected void create();
 
     @FXML
@@ -58,6 +57,6 @@ abstract public class AbstractProjectController extends Controller {
     }
 
     protected String projectPath() {
-        return this.path + "/" + this.name;
+        return this.path.getText() + "/" + this.name.getText();
     }
 }

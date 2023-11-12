@@ -70,10 +70,11 @@
                   </Label>
                   <StackPane prefHeight="150.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
                      <children>
-                        <TextField fx:id="path" styleClass="input">
+                        <TextField fx:id="path" editable="false" styleClass="input">
                            <font>
                               <Font size="16.0" />
-                           </font></TextField>
+                           </font>
+                        </TextField>
                         <ImageView fitHeight="22.0" fitWidth="22.0" onMouseClicked="#openFolderLocator" pickOnBounds="true" preserveRatio="true" StackPane.alignment="CENTER_RIGHT">
                            <image>
                               <Image url="@../../images/open_folder.png" />

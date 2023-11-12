@@ -6,6 +6,9 @@ import com.example.demo.ide.Infrastructure.Stubs.ComposerJson;
 import com.example.demo.ide.Infrastructure.Stubs.ComposerPackageJson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.util.FileSystemUtils;
+import java.io.File;
+import java.io.IOException;
 
 @Component
 public class ProjectFactory {
@@ -50,6 +53,15 @@ public class ProjectFactory {
     }
 
     private void copyLaravelStub(String path, String version) {
+        File stub = new File(this.getClass().getClassLoader().getResource("stubs/laravel/10").getPath());
 
+        try {
+            FileSystemUtils.copyRecursively(
+                stub,
+                new File(path)
+            );
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
