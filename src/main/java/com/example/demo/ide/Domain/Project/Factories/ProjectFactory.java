@@ -53,7 +53,12 @@ public class ProjectFactory {
     }
 
     private void copyLaravelStub(String path, String version) {
-        File stub = new File(this.getClass().getClassLoader().getResource("stubs/laravel/10").getPath());
+        File stub = new File(
+            this.getClass()
+                .getClassLoader()
+                .getResource("stubs/laravel/" + version)
+                .getPath()
+        );
 
         try {
             FileSystemUtils.copyRecursively(
