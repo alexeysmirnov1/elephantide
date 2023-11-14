@@ -7,14 +7,17 @@ import javafx.fxml.FXML;
 import org.springframework.stereotype.Component;
 
 @Component
-public class OpenProjectController extends Controller {
-    @FXML
-    public void comeBack() {
-        this.stage.switchScene(this.context.getBean(Fork.class).load());
+public class OpenProjectController extends AbstractProjectController {
+    @Override
+    protected void create() {
+
     }
 
     @FXML
     public void open() {
         this.stage.switchScene(this.context.getBean(Editor.class).load());
     }
+
+    @FXML
+    protected void validate() {}
 }
