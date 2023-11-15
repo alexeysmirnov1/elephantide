@@ -1,7 +1,19 @@
+.base {
+    -fx-background: #00141E;
+}
+
 .editor {
+    -fx-background: #00141E;
     -fx-font-family: Consolas;
     -fx-font-size: 18;
-    -fx-background-color: #999999;
     -fx-text-fill: #FFFFFF;
     -fx-highlight-fill: #00FF00;
+}
+
+.top {
+    -fx-background: #21272E;
+}
+
+.tab {
+    -fx-background: #00141E;
 }
