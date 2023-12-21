@@ -1,19 +1,25 @@
 .base {
-    -fx-background: #00141E;
+    -fx-background-color: #00141E;
 }
 
 .editor {
-    -fx-background: #00141E;
+    -fx-background-color: #00141E;
     -fx-font-family: Consolas;
-    -fx-font-size: 18;
+    -fx-font-size: 24;
     -fx-text-fill: #FFFFFF;
     -fx-highlight-fill: #00FF00;
 }
 
 .top {
-    -fx-background: #21272E;
+    -fx-background-color: #21272E;
 }
 
 .tab {
-    -fx-background: #00141E;
+    -fx-background-color: #00141E;
+    -fx-background-radius: 10 10 0 0;
+}
+
+.project-name {
+    -fx-background-color: #00141E;
+    -fx-border-color: #ffffff20;
 }

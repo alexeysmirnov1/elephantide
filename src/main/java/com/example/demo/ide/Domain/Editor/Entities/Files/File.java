@@ -22,6 +22,11 @@ public final class File {
         return this.path;
     }
 
+    public String name() {
+        java.io.File file = new java.io.File(this.path);
+        return file.getName();
+    }
+
     public ArrayList<String> lines() {
         if(this.lines.isEmpty()) {
             this.read();
