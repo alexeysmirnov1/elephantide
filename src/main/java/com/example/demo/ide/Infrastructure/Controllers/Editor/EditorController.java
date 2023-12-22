@@ -3,6 +3,7 @@ package com.example.demo.ide.Infrastructure.Controllers.Editor;
 import com.example.demo.ide.Domain.Editor.Entities.Files.File;
 import com.example.demo.ide.Domain.Editor.Entities.Files.StyledTokenizedFile;
 import com.example.demo.ide.Domain.Editor.Entities.Files.TokenizedFile;
+import com.example.demo.ide.Domain.Editor.Entities.Project;
 import com.example.demo.ide.Domain.Editor.Entities.Tab;
 import com.example.demo.ide.Domain.Editor.Services.ContentStylist;
 import com.example.demo.ide.Domain.Editor.VO.FixedList;
@@ -32,6 +33,13 @@ public class EditorController extends Controller {
     private FixedList<Tab> tabs = new FixedList<>(5);
 
     private File openedFile;
+
+    private Project project;
+
+    public void project(Project project) {
+        this.project = project;
+        System.out.println(project.path());
+    }
 
     @FXML
     public void initialize() {

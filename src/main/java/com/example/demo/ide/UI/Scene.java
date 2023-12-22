@@ -11,7 +11,7 @@ import java.net.URL;
 
 public class Scene {
     @Autowired
-    private ConfigurableApplicationContext context;
+    protected ConfigurableApplicationContext context;
 
     protected Resource fxml;
 
