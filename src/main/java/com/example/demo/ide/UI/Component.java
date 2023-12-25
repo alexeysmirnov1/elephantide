@@ -27,8 +27,4 @@ public class Component {
             return null;
         }
     }
-
-    public void afterCreating(javafx.scene.Scene scene) {
-
-    }
 }

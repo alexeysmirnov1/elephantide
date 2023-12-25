@@ -2,7 +2,6 @@
 
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
@@ -18,15 +17,26 @@
                   <Font size="16.0" />
                </font>
             </Label>
-          <VirtualizedScrollPane VBox.vgrow="ALWAYS">
-              <content>
-                  <StyleClassedTextArea fx:id="codeEditor" cacheShape="false" centerShape="false" onKeyTyped="#changedContent" pickOnBounds="false" scaleShape="false" styleClass="editor" wrapText="true" VBox.vgrow="ALWAYS">
-                    <padding>
-                       <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-                    </padding>
-                  </StyleClassedTextArea>
-              </content>
-          </VirtualizedScrollPane>
+            <StackPane VBox.vgrow="ALWAYS">
+               <children>
+                  <VirtualizedScrollPane>
+                     <content>
+                        <StyleClassedTextArea fx:id="codeEditor" cacheShape="false" centerShape="false" onKeyTyped="#changedContent" pickOnBounds="false" scaleShape="false" styleClass="editor" wrapText="true" VBox.vgrow="ALWAYS">
+                           <padding>
+                              <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                           </padding>
+                        </StyleClassedTextArea>
+                     </content>
+                  </VirtualizedScrollPane>
+                  <VBox fx:id="projectDiscover" maxWidth="200.0" prefHeight="200.0" prefWidth="150.0" styleClass="bg" BorderPane.alignment="CENTER" StackPane.alignment="CENTER_LEFT">
+                     <children>
+                     </children>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                  </VBox>
+               </children>
+            </StackPane>
          </children>
       </VBox>
 </center>
@@ -37,48 +47,6 @@
                <children>
                   <HBox fx:id="tabPanel" spacing="10.0">
                      <children>
-<!--                        <VBox alignment="BOTTOM_LEFT">-->
-<!--                           <children>-->
-<!--                              <HBox alignment="CENTER" fillHeight="false" maxHeight="50.0" prefHeight="50.0" spacing="10.0" styleClass="tab">-->
-<!--                                 <children>-->
-<!--                                    <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">-->
-<!--                                       <image>-->
-<!--                                          <Image url="@../../images/extensions/php.png" />-->
-<!--                                       </image>-->
-<!--                                    </ImageView>-->
-<!--                                    <Label text="OrderController.php" textFill="WHITE">-->
-<!--                                       <font>-->
-<!--                                          <Font name="JetBrains Mono Regular" size="16.0" />-->
-<!--                                       </font>-->
-<!--                                    </Label>-->
-<!--                                 </children>-->
-<!--                                 <padding>-->
-<!--                                    <Insets left="10.0" right="10.0" />-->
-<!--                                 </padding>-->
-<!--                              </HBox>-->
-<!--                           </children>-->
-<!--                        </VBox>-->
-<!--                        <VBox alignment="BOTTOM_LEFT" layoutX="10.0" layoutY="10.0">-->
-<!--                           <children>-->
-<!--                              <HBox alignment="CENTER" fillHeight="false" maxHeight="50.0" prefHeight="50.0" spacing="10.0" styleClass="tab">-->
-<!--                                 <children>-->
-<!--                                    <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">-->
-<!--                                       <image>-->
-<!--                                          <Image url="@../../images/extensions/php.png" />-->
-<!--                                       </image>-->
-<!--                                    </ImageView>-->
-<!--                                    <Label text="Order.php" textFill="WHITE">-->
-<!--                                       <font>-->
-<!--                                          <Font name="JetBrains Mono Regular" size="16.0" />-->
-<!--                                       </font>-->
-<!--                                    </Label>-->
-<!--                                 </children>-->
-<!--                                 <padding>-->
-<!--                                    <Insets left="10.0" right="10.0" />-->
-<!--                                 </padding>-->
-<!--                              </HBox>-->
-<!--                           </children>-->
-<!--                        </VBox>-->
                      </children>
                   </HBox>
                   <StackPane onMouseClicked="#openFile" prefHeight="40.0" prefWidth="40.0">

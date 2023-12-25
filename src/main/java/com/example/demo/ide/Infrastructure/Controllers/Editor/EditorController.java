@@ -8,12 +8,14 @@ import com.example.demo.ide.Domain.Editor.Entities.Tab;
 import com.example.demo.ide.Domain.Editor.Services.ContentStylist;
 import com.example.demo.ide.Domain.Editor.VO.FixedList;
 import com.example.demo.ide.Infrastructure.Controllers.Controller;
+import com.example.demo.ide.UI.Components.Editor.Directory;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Label;
+import javafx.scene.control.SplitPane;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
 import org.fxmisc.richtext.StyleClassedTextArea;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -30,6 +32,12 @@ public class EditorController extends Controller {
     @FXML
     private StyleClassedTextArea codeEditor;
 
+    @FXML
+    private SplitPane window;
+
+    @FXML
+    private VBox projectDiscover;
+
     private FixedList<Tab> tabs = new FixedList<>(5);
 
     private File openedFile;
@@ -38,13 +46,29 @@ public class EditorController extends Controller {
 
     public void project(Project project) {
         this.project = project;
-        System.out.println(project.path());
     }
 
     @FXML
     public void initialize() {
         this.chooseFile(Paths.get("").toAbsolutePath() + "/project/example.php");
 //        this.chooseFile(Paths.get("").toAbsolutePath() + "\\project\\short-example.php");
+//        System.out.println(this.project.files());
+
+        for(java.io.File file: this.project.files()) {
+            HBox fileComponent;
+
+            if (file.isDirectory()) {
+                fileComponent = (HBox) this.context.getBean(Directory.class).load();
+                Label name = (Label) fileComponent.lookup("#dirName");
+                name.setText(file.getName());
+            } else {
+                fileComponent = (HBox) this.context.getBean(com.example.demo.ide.UI.Components.Editor.File.class).load();
+                Label name = (Label) fileComponent.lookup("#fileName");
+                name.setText(file.getName());
+            }
+
+            this.projectDiscover.getChildren().add(fileComponent);
+        }
     }
 
     public void changedContent() {
@@ -67,6 +91,7 @@ public class EditorController extends Controller {
     }
 
     public void openFile(MouseEvent mouseEvent) {
+        this.chooseFile(Paths.get("").toAbsolutePath() + "/project/short-example.php");
     }
 
     public void chooseFile(String path) {

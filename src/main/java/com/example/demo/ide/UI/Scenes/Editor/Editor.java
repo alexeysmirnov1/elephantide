@@ -20,7 +20,6 @@ public class Editor extends Scene {
         this.fxml = resource;
         this.width = 1300;
         this.height = 800;
-//        this.projectPath = projectPath;
     }
 
     public Editor project(String projectPath) {

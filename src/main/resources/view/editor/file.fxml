@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.text.Font?>
+
+<HBox alignment="CENTER_LEFT" prefHeight="20.0" prefWidth="200.0" spacing="5.0"
+      xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+>
+    <children>
+        <Label textFill="WHITE" fx:id="fileName">
+            <font>
+                <Font size="16.0" />
+            </font>
+        </Label>
+    </children>
+</HBox>

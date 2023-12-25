@@ -17,7 +17,9 @@ public class OpenProjectController extends AbstractProjectController {
 
     @FXML
     public void open() {
-        this.stage.switchScene(this.context.getBean(Editor.class, this.path.getText()).project(this.path.getText()).load());
+        this.stage.switchScene(this.context.getBean(Editor.class)
+            .project(this.path.getText())
+            .load());
     }
 
     @FXML
