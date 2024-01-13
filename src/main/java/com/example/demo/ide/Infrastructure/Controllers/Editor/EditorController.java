@@ -10,7 +10,6 @@ import com.example.demo.ide.Domain.Editor.VO.FixedList;
 import com.example.demo.ide.Infrastructure.Controllers.Controller;
 import com.example.demo.ide.UI.Components.Editor.Directory;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.SplitPane;
 import javafx.scene.input.MouseEvent;
@@ -52,7 +51,6 @@ public class EditorController extends Controller {
     public void initialize() {
         this.chooseFile(Paths.get("").toAbsolutePath() + "/project/example.php");
 //        this.chooseFile(Paths.get("").toAbsolutePath() + "\\project\\short-example.php");
-//        System.out.println(this.project.files());
 
         for(java.io.File file: this.project.files()) {
             HBox fileComponent;
@@ -61,10 +59,14 @@ public class EditorController extends Controller {
                 fileComponent = (HBox) this.context.getBean(Directory.class).load();
                 Label name = (Label) fileComponent.lookup("#dirName");
                 name.setText(file.getName());
+
+                name.setOnMouseClicked(event -> this.openCloseDirectory(fileComponent, file));
             } else {
                 fileComponent = (HBox) this.context.getBean(com.example.demo.ide.UI.Components.Editor.File.class).load();
                 Label name = (Label) fileComponent.lookup("#fileName");
                 name.setText(file.getName());
+
+                name.setOnMouseClicked(event -> this.chooseFile(file.getPath()));
             }
 
             this.projectDiscover.getChildren().add(fileComponent);
@@ -94,7 +96,7 @@ public class EditorController extends Controller {
         this.chooseFile(Paths.get("").toAbsolutePath() + "/project/short-example.php");
     }
 
-    public void chooseFile(String path) {
+    private void chooseFile(String path) {
         this.openedFile = new File(path);
         this.updateStyledContentOpenedFile();
 
@@ -107,6 +109,39 @@ public class EditorController extends Controller {
             property.setText(this.openedFile.name());
 
             this.tabPanel.getChildren().add(tabComponent);
+        }
+    }
+
+    private void openCloseDirectory(HBox directory, java.io.File file) {
+//        System.out.println("open dir: " + directory.toString());
+//        System.out.println("file: " + file.toString());
+        com.example.demo.ide.Domain.Editor.Entities.Directory dir = new com.example.demo.ide.Domain.Editor.Entities.Directory(file.getPath());
+
+        VBox children = (VBox) directory.lookup("#children");
+
+        if(children.getChildren().stream().count() > 0) {
+            children.getChildren().clear();
+            return;
+        }
+
+        for(java.io.File item: dir.files()) {
+            HBox fileComponent;
+
+            if (item.isDirectory()) {
+                fileComponent = (HBox) this.context.getBean(Directory.class).load();
+                Label name = (Label) fileComponent.lookup("#dirName");
+                name.setText(item.getName());
+
+                name.setOnMouseClicked(event -> this.openCloseDirectory(fileComponent, item));
+            } else {
+                fileComponent = (HBox) this.context.getBean(com.example.demo.ide.UI.Components.Editor.File.class).load();
+                Label name = (Label) fileComponent.lookup("#fileName");
+                name.setText(item.getName());
+
+                name.setOnMouseClicked(event -> this.chooseFile(item.getPath()));
+            }
+
+            children.getChildren().add(fileComponent);
         }
     }
 }
