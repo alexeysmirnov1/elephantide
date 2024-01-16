@@ -1,7 +1,7 @@
-package com.example.demo.ide.UI.Scenes.Editor;
+package com.example.demo.ide.Presentation.Editor.UI.Scenes;
 
 import com.example.demo.ide.Domain.Editor.Entities.Project;
-import com.example.demo.ide.Infrastructure.Controllers.Editor.EditorController;
+import com.example.demo.ide.Infrastructure.Controllers.Editor.EditorViewModel;
 import com.example.demo.ide.UI.Scene;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -32,7 +32,7 @@ public class Editor extends Scene {
             URL url = this.fxml.getURL();
             FXMLLoader fxmlLoader = new FXMLLoader(url);
 
-            EditorController controller = this.context.getBean(EditorController.class);
+            EditorViewModel controller = this.context.getBean(EditorViewModel.class);
             controller.project(new Project(this.projectPath));
             fxmlLoader.setControllerFactory(requiredType -> controller);
 

@@ -1,6 +1,6 @@
 package com.example.demo.ide.Infrastructure.Controllers.Project;
 
-import com.example.demo.ide.UI.Scenes.Editor.Editor;
+import com.example.demo.ide.Presentation.Editor.UI.Scenes.Editor;
 import javafx.fxml.FXML;
 import org.springframework.stereotype.Component;
 

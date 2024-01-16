@@ -41,7 +41,7 @@ public class FixedList<T> {
 
     public boolean contains(T item) {
         for (T t: this.list) {
-            if (t.equals(item)) {
+            if (t.toString().equals(item.toString())) {
                 return true;
             }
         }

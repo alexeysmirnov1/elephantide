@@ -1,7 +1,7 @@
 package com.example.demo.ide.Infrastructure.Controllers.Project;
 
 import com.example.demo.ide.Domain.Project.Entities.Project;
-import com.example.demo.ide.UI.Scenes.Editor.Editor;
+import com.example.demo.ide.Presentation.Editor.UI.Scenes.Editor;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
 import org.springframework.stereotype.Component;

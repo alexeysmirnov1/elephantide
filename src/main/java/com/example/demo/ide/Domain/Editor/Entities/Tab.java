@@ -9,5 +9,11 @@ public class Tab {
         this.file = file;
     }
 
+    public String name() {
+        return this.file.name();
+    }
 
+    public String toString() {
+        return this.file.path();
+    }
 }

@@ -1,6 +1,7 @@
 package com.example.demo.ide.UI;
 
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -15,6 +16,8 @@ public class Component {
 
     protected Resource fxml;
 
+    protected Parent component;
+
     public Parent load() {
         try {
             URL url = this.fxml.getURL();
@@ -26,5 +29,9 @@ public class Component {
             e.printStackTrace();
             return null;
         }
+    }
+
+    public Parent fxml() {
+        return this.component;
     }
 }
