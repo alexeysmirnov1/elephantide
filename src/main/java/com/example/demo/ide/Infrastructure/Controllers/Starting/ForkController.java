@@ -1,8 +1,8 @@
 package com.example.demo.ide.Infrastructure.Controllers.Starting;
 
 import com.example.demo.ide.Infrastructure.Controllers.Controller;
-import com.example.demo.ide.UI.Scenes.Project.Choose;
-import com.example.demo.ide.UI.Scenes.Project.Open;
+import com.example.demo.ide.Presentation.Project.UI.Scenes.Choose;
+import com.example.demo.ide.Presentation.Project.UI.Scenes.Open;
 import javafx.fxml.FXML;
 import org.springframework.stereotype.Component;
 

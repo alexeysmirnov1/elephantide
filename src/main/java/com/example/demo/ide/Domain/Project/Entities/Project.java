@@ -9,7 +9,6 @@ import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
 
 public class Project {
-
     private final File project;
 
     public Project(String path) {

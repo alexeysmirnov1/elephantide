@@ -1,4 +1,4 @@
-package com.example.demo.ide.UI.Scenes.Project;
+package com.example.demo.ide.Presentation.Project.UI.Scenes;
 
 import com.example.demo.ide.UI.Scene;
 import javafx.scene.paint.Color;

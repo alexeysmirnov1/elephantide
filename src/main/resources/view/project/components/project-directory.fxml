@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      prefWidth="400.0"
+>
+    <children>
+        <Label fx:id="title">
+            <font>
+                <Font size="24.0" />
+            </font>
+        </Label>
+        <Label alignment="CENTER_RIGHT" prefWidth="400.0" textAlignment="RIGHT" textFill="DARKGRAY" fx:id="path">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Label>
+    </children>
+</VBox>

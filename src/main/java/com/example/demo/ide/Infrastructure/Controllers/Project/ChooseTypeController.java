@@ -1,7 +1,10 @@
 package com.example.demo.ide.Infrastructure.Controllers.Project;
 
 import com.example.demo.ide.Infrastructure.Controllers.Controller;
-import com.example.demo.ide.UI.Scenes.Project.*;
+import com.example.demo.ide.Presentation.Project.UI.Scenes.Composer;
+import com.example.demo.ide.Presentation.Project.UI.Scenes.Empty;
+import com.example.demo.ide.Presentation.Project.UI.Scenes.Laravel;
+import com.example.demo.ide.Presentation.Project.UI.Scenes.Vcs;
 import com.example.demo.ide.UI.Scenes.Starting.Fork;
 import javafx.fxml.FXML;
 import org.springframework.stereotype.Component;
