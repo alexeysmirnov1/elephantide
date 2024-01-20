@@ -1,5 +1,7 @@
 package com.example.demo.ide.Infrastructure.Controllers.Project;
 
+import com.example.demo.ide.Application.Project.Actions.OpenProject;
+import com.example.demo.ide.Application.Project.Actions.RecentProject;
 import com.example.demo.ide.Domain.Project.Entities.ProjectDirectory;
 import com.example.demo.ide.Infrastructure.Repositories.Project.ProjectDirectoryRepository;
 import com.example.demo.ide.Presentation.Editor.UI.Scenes.Editor;
@@ -38,37 +40,18 @@ public class OpenProjectViewModel extends AbstractProjectController {
 
     @FXML
     public void open() {
-        ProjectDirectory projectDirectory = this.repository.findByPath(this.path.getText());
-        Integer maxOrder = this.repository.findMaxOrder();
-        if(projectDirectory == null) {
-            projectDirectory = new ProjectDirectory();
-            projectDirectory.setId(maxOrder == null ? 0 : maxOrder + 1);
-            projectDirectory.setPath(this.path.getText());
-            this.repository.save(projectDirectory);
-        } else {
-            if(maxOrder > projectDirectory.id) {
-                projectDirectory.setId(maxOrder + 1);
-                this.repository.save(projectDirectory);
-            }
-        }
+        OpenProject action = this.context.getBean(OpenProject.class);
+        ProjectDirectory projectDirectory = action.execute(this.path.getText());
 
         this.stage.switchScene(this.context.getBean(Editor.class)
-            .project(this.path.getText())
+            .project(projectDirectory.getPath())
             .load());
     }
 
     @FXML
     public void recent(String path) {
-        ProjectDirectory projectDirectory = this.repository.findByPath(path);
-
-        System.out.println(projectDirectory.path);
-        System.out.println(projectDirectory.id);
-
-        Integer maxOrder = this.repository.findMaxOrder();
-        if(maxOrder > projectDirectory.id) {
-            projectDirectory.setId(maxOrder + 1);
-            this.repository.save(projectDirectory);
-        }
+        RecentProject action = this.context.getBean(RecentProject.class);
+        ProjectDirectory projectDirectory = action.execute(path);
 
         this.stage.switchScene(this.context.getBean(Editor.class)
             .project(projectDirectory.getPath())

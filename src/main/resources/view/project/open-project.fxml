@@ -76,34 +76,6 @@
             </HBox>
             <VBox fx:id="projects" alignment="TOP_CENTER" maxWidth="400.0" prefHeight="200.0" prefWidth="400.0">
                <children>
-<!--                  <VBox prefWidth="400.0">-->
-<!--                     <children>-->
-<!--                        <Label text="calculator">-->
-<!--                           <font>-->
-<!--                              <Font size="24.0" />-->
-<!--                           </font>-->
-<!--                        </Label>-->
-<!--                        <Label alignment="CENTER_RIGHT" prefWidth="400.0" text="/root/projects/calculator" textAlignment="RIGHT" textFill="DARKGRAY">-->
-<!--                           <font>-->
-<!--                              <Font size="14.0" />-->
-<!--                           </font>-->
-<!--                        </Label>-->
-<!--                     </children>-->
-<!--                  </VBox>-->
-<!--                  <VBox layoutX="10.0" layoutY="10.0" prefWidth="400.0">-->
-<!--                     <children>-->
-<!--                        <Label text="ide">-->
-<!--                           <font>-->
-<!--                              <Font size="24.0" />-->
-<!--                           </font>-->
-<!--                        </Label>-->
-<!--                        <Label alignment="CENTER_RIGHT" prefWidth="400.0" text="/root/projects/ide" textAlignment="RIGHT" textFill="DARKGRAY">-->
-<!--                           <font>-->
-<!--                              <Font size="14.0" />-->
-<!--                           </font>-->
-<!--                        </Label>-->
-<!--                     </children>-->
-<!--                  </VBox>-->
                </children>
                <VBox.margin>
                   <Insets top="30.0" />
