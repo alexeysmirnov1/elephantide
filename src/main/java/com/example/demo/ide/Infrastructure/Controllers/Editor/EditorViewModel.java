@@ -23,9 +23,6 @@ public class EditorViewModel extends EditorView {
 
     @FXML
     public void initialize() {
-//        this.chooseFile(new File(Paths.get("").toAbsolutePath() + "/project/example.php"));
-//        this.chooseFile(Paths.get("").toAbsolutePath() + "\\project\\short-example.php");
-
         this.initProjectDiscover(this.project);
     }
 
@@ -42,7 +39,7 @@ public class EditorViewModel extends EditorView {
         if(!this.tabs.contains(tab)) {
             this.tabs.add(tab);
 
-            this.updateTabs(this.tabs);
+            this.updateTabs(this.tabs, tab);
         }
     }
 

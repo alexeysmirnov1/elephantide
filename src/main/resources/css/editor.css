@@ -23,7 +23,11 @@
     -fx-background-radius: 10 10 0 0;
 }
 
+.tab-disable {
+    -fx-opacity: 0.5;
+}
+
 .project-name {
     -fx-background-color: #00141E;
-    -fx-border-color: #ffffff20;
+    -fx-border-color: #ffffff10;
 }

@@ -59,13 +59,17 @@ public abstract class EditorView {
         this.codeEditor.moveTo(caretCurrentPosition);
     }
 
-    protected void updateTabs(FixedList<Tab> tabs) {
+    protected void updateTabs(FixedList<Tab> tabs, Tab current) {
         this.tabPanel.getChildren().clear();
 
         for(Tab tab: tabs.getItems()) {
             VBox tabComponent = (VBox) this.context.getBean(com.example.demo.ide.Presentation.Editor.UI.Components.Tab.class).load();
             Label property = (Label) tabComponent.lookup("#title");
             property.setText(tab.name());
+
+            if (!tab.equals(current)) {
+                tabComponent.getStyleClass().add("tab-disable");
+            }
 
             this.tabPanel.getChildren().add(tabComponent);
         }
