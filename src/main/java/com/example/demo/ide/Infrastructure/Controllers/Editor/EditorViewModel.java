@@ -31,7 +31,7 @@ public class EditorViewModel extends EditorView {
         this.updateEditor(this.currentFile);
     }
 
-    public void openFile(String filePath) {
+    protected void openFile(String filePath) {
         this.currentFile = new File(filePath);
         this.updateEditor(this.currentFile);
 
@@ -40,6 +40,18 @@ public class EditorViewModel extends EditorView {
             this.tabs.add(tab);
 
             this.updateTabs(this.tabs, tab);
+        } else {
+            this.chooseTab(filePath);
+        }
+    }
+
+    protected void chooseTab(String filePath) {
+        for(Tab tab: this.tabs.getItems()) {
+            if(tab.toString().equals(filePath)) {
+                this.currentFile = new File(filePath);
+                this.updateEditor(this.currentFile);
+                this.updateTabs(this.tabs, tab);
+            }
         }
     }
 

@@ -69,6 +69,7 @@ public abstract class EditorView {
 
             if (!tab.equals(current)) {
                 tabComponent.getStyleClass().add("tab-disable");
+                tabComponent.setOnMouseClicked(event -> this.chooseTab(tab.toString()));
             }
 
             this.tabPanel.getChildren().add(tabComponent);
@@ -106,4 +107,6 @@ public abstract class EditorView {
     }
 
     protected abstract void openFile(String filePath);
+
+    protected abstract void chooseTab(String filePath);
 }
