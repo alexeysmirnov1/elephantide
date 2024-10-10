@@ -21,7 +21,7 @@
                <children>
                   <HBox maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
                      <children>
-                     <VirtualizedScrollPane>
+                     <VirtualizedScrollPane HBox.hgrow="ALWAYS">
                         <content>
                            <StyleClassedTextArea fx:id="codeEditor" cacheShape="false" centerShape="false" onKeyTyped="#updateFile" pickOnBounds="false" scaleShape="false" styleClass="editor" wrapText="true" VBox.vgrow="ALWAYS">
                               <padding>
