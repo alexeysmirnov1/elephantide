@@ -5,6 +5,9 @@ import com.example.demo.ide.Infrastructure.Controllers.Editor.EditorViewModel;
 import com.example.demo.ide.UI.Scene;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyCodeCombination;
+import javafx.scene.input.KeyCombination;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Component;
@@ -15,6 +18,8 @@ import java.net.URL;
 @Component
 public class Editor extends Scene {
     private String projectPath;
+
+    private EditorViewModel controller;
 
     public Editor(@Value("classpath:/view/editor/index.fxml") Resource resource) {
         this.fxml = resource;
@@ -32,9 +37,9 @@ public class Editor extends Scene {
             URL url = this.fxml.getURL();
             FXMLLoader fxmlLoader = new FXMLLoader(url);
 
-            EditorViewModel controller = this.context.getBean(EditorViewModel.class);
-            controller.project(new Project(this.projectPath));
-            fxmlLoader.setControllerFactory(requiredType -> controller);
+            this.controller = this.context.getBean(EditorViewModel.class);
+            this.controller.project(new Project(this.projectPath));
+            fxmlLoader.setControllerFactory(requiredType -> this.controller);
 
             Parent root = fxmlLoader.load();
 
@@ -53,6 +58,21 @@ public class Editor extends Scene {
     public void afterCreating(javafx.scene.Scene scene) {
         scene.getStylesheets().add(
             Editor.class.getClassLoader().getResource("css/phptokens.css").toExternalForm()
+        );
+
+        // show project discover
+        scene.getAccelerators().put(
+            new KeyCodeCombination(KeyCode.N, KeyCombination.CONTROL_DOWN, KeyCombination.SHIFT_DOWN),
+            ()-> {
+                this.controller.showProject();
+            }
+        );
+        // hide project discover
+        scene.getAccelerators().put(
+            new KeyCodeCombination(KeyCode.ESCAPE),
+            ()-> {
+                this.controller.hideProject();
+            }
         );
     }
 }

@@ -1,9 +1,13 @@
+.scroll-pane > .viewport {
+   -fx-background-color: transparent;
+}
+
 .base {
     -fx-background-color: #00141E;
 }
 
 .bg {
-    -fx-background-color: #00141E;
+    -fx-background-color: #00141ECC;
 }
 
 .editor {
@@ -30,4 +34,12 @@
 .project-name {
     -fx-background-color: #00141E;
     -fx-border-color: #ffffff10;
+}
+
+.discover_disable {
+    -fx-opacity: 0;
+}
+
+.discover--item:hover {
+    -fx-background-color: ffffff10;
 }

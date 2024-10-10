@@ -6,7 +6,7 @@ import com.example.demo.ide.Domain.Editor.Entities.Tab;
 import com.example.demo.ide.Domain.Editor.VO.FixedList;
 import com.example.demo.ide.Presentation.Editor.Views.EditorView;
 import javafx.fxml.FXML;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.input.*;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -27,8 +27,10 @@ public class EditorViewModel extends EditorView {
     }
 
     public void updateFile() {
-        this.currentFile.changeContent(this.codeEditor.getText());
-        this.updateEditor(this.currentFile);
+        if(!this.codeEditor.getText().isEmpty()) {
+            this.currentFile.changeContent(this.codeEditor.getText());
+            this.updateEditor(this.currentFile);
+        }
     }
 
     protected void openFile(String filePath) {
@@ -55,8 +57,8 @@ public class EditorViewModel extends EditorView {
         }
     }
 
-    //кнопка + на панели табов
-    public void showProject(MouseEvent mouseEvent) {
-
-    }
+//    //кнопка + на панели табов
+//    public void showProject(MouseEvent mouseEvent) {
+//
+//    }
 }
