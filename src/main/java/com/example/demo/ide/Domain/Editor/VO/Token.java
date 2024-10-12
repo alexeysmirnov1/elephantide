@@ -2,7 +2,7 @@ package com.example.demo.ide.Domain.Editor.VO;
 
 public final class Token {
     final private String token;
-    final private String type;
+    private String type;
 
     final private int[] position;
 
@@ -24,8 +24,8 @@ public final class Token {
         return this.position[0];
     }
 
-    public Token changeType(String type) {
-        return new Token(this.token, type, this.position);
+    public void changeType(String type) {
+        this.type = type;
     }
 
     @Override

@@ -24,7 +24,6 @@ public final class TokenizedFile {
         boolean openQ = false;
 
         for(int l = 0; l < this.file.lines().size(); l++) {
-//            System.out.println("line: " + l + ", length: " + this.lineLength(l));
             for (int s = 0; s < this.lineLength(l); s++) {
                 char ch = this.file.lines().get(l).charAt(s);
 
@@ -55,8 +54,8 @@ public final class TokenizedFile {
 
     private String type(String token) {
         final int countTokens = this.tokens.size();
-        if (countTokens > 0) {
-            Token lastToken = this.tokens.get(countTokens - 1);
+        if (countTokens > 1) {
+            Token lastToken = this.tokens.get(countTokens - 2);
             switch (lastToken.getToken()) {
                 case "class": return "CLASS";
                 case "function": return "FUNCTION";
@@ -79,19 +78,29 @@ public final class TokenizedFile {
         }
 
         switch (token) {
+            case " ":
+                return "SPACE";
             case "<?php":
+                return "OPEN_TAG";
+            case "<?":
+                return "SHORT_TAG";
+            case "<?=":
+                return "SHORT_PRINT_TAG";
             case "?>":
-                return "TAGS";
+                return "CLOSE_TAG";
             case "public":
             case "protected":
             case "private":
                 return "MODIFICATOR";
+            case "readonly":
+                return "READ_MODIFICATOR";
             case "namespace":
             case "use":
             case "class":
             case "function":
             case "return":
             case "extends":
+            case "new":
                 return "KEYWORD";
             case "implements":
                 this.hasInterfaces = true;
@@ -130,8 +139,6 @@ public final class TokenizedFile {
                 return "ENDBLOCK";
             case "\n":
                 return "BREAK";
-            case " ":
-                return "SPACE";
             case "(":
                 if (countTokens > 0) {
                     int prevIndex = countTokens - 1;
@@ -139,16 +146,13 @@ public final class TokenizedFile {
 
                     switch (lastToken.getType()) {
                         case "PROPERTY":
-                            this.tokens.remove(prevIndex);
-                            this.tokens.add(lastToken.changeType("METHOD"));
+                            lastToken.changeType("METHOD");
                             break;
                         case "CONST":
-                            this.tokens.remove(prevIndex);
-                            this.tokens.add(lastToken.changeType("STATICMETHOD"));
+                            lastToken.changeType("STATICMETHOD");
                             break;
                         case "NONE":
-                            this.tokens.remove(prevIndex);
-                            this.tokens.add(lastToken.changeType("FUNCTION"));
+                            lastToken.changeType("FUNCTION");
                             break;
                     }
                 }
@@ -164,13 +168,17 @@ public final class TokenizedFile {
                 int prevIndex = countTokens - 1;
                 Token lastToken = this.tokens.get(prevIndex);
                 if (!lastToken.getType().equals("ENDBRACKET")) {
-                    this.tokens.remove(prevIndex);
-                    this.tokens.add(lastToken.changeType("CLASS"));
+                    lastToken.changeType("CLASS");
                 }
                 return "CHAIN";
         }
 
         if(token.startsWith("$")) {
+            int prevIndex = countTokens - 1;
+            Token lastToken = this.tokens.get(prevIndex);
+            if (lastToken.getType().equals("NONE")) {
+                lastToken.changeType("TYPE");
+            }
             return "VAR";
         }
 
