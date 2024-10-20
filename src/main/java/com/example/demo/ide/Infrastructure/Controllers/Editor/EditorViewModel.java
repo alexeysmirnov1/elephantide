@@ -1,15 +1,20 @@
 package com.example.demo.ide.Infrastructure.Controllers.Editor;
 
+import com.example.demo.ide.Common.Contracts.FileIndexContract;
 import com.example.demo.ide.Domain.Editor.Entities.Files.File;
 import com.example.demo.ide.Domain.Editor.Entities.Project;
 import com.example.demo.ide.Domain.Editor.Entities.Tab;
 import com.example.demo.ide.Domain.Editor.VO.FixedList;
 import com.example.demo.ide.Presentation.Editor.Views.EditorView;
 import javafx.fxml.FXML;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class EditorViewModel extends EditorView {
+    @Autowired
+    private FileIndexContract fileIndex;
+
     private FixedList<Tab> tabs = new FixedList<>(5);
 
     private File currentFile;
@@ -18,6 +23,21 @@ public class EditorViewModel extends EditorView {
 
     public void project(Project project) {
         this.project = project;
+
+        java.io.File root = new java.io.File(this.project.path());
+        this.indexingProject(root);
+
+        this.fileIndex.search("router");
+    }
+
+    private void indexingProject(java.io.File root) {
+        for (java.io.File file: root.listFiles()) {
+            if (file.isFile()) {
+                this.fileIndex.add(file.getPath());
+            } else {
+                this.indexingProject(file);
+            }
+        }
     }
 
     @FXML
