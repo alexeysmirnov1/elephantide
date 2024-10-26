@@ -27,7 +27,7 @@ public class EditorViewModel extends EditorView {
         java.io.File root = new java.io.File(this.project.path());
         this.indexingProject(root);
 
-        this.fileIndex.search("router");
+        this.fileIndex.search("rou");
     }
 
     private void indexingProject(java.io.File root) {

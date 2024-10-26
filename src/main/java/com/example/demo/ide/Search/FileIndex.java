@@ -20,8 +20,8 @@ public class FileIndex implements FileIndexContract {
 
         for (String file: this.files) {
             Matcher matcher = pattern.matcher(file);
-            while (matcher.find()) {
-                System.out.println(file);
+            if (matcher.find()) {
+                results.add(file);
             }
         }
 
