@@ -15,7 +15,10 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Paint;
+import javafx.scene.text.Text;
 import org.fxmisc.richtext.StyleClassedTextArea;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -40,6 +43,26 @@ public abstract class EditorView {
     protected VBox projectDiscover;
     @FXML
     protected HBox discoverBox;
+
+    @FXML
+    protected Pane editorPane;
+
+    @FXML
+    public void initialize() {
+        Label classText = new Label("MyClass");
+        classText.setLayoutX(20);
+        classText.setLayoutY(40);
+        classText.setTextFill(Paint.valueOf("00BCAF"));
+        classText.getStyleClass().add("php-class");
+        classText.getStyleClass().add("font-size");
+        classText.getStyleClass().add("syntax-error");
+        classText.getStyleClass().add("not-found");
+
+        //todo при наведении мышью делать переход в класс или метод
+        classText.getOnMouseEntered();
+
+        this.editorPane.getChildren().add(classText);
+    }
 
     public void showProject() {
         this.discoverBox.setTranslateX(0);

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.*?>
+<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.*?>
@@ -89,4 +90,22 @@
          </children>
       </HBox>
    </top>
+   <bottom>
+      <Pane fx:id="editorPane" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="71.0" layoutY="33.0" style="-fx-border-style: dashed; -fx-font: red;" text="Label" textFill="#cf7878">
+               <font>
+                  <Font size="20.0" />
+               </font></Label>
+            <Line endX="100.0" layoutX="115.0" layoutY="78.0" startX="-100.0" stroke="#c72c2c" strokeDashOffset="10.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" />
+            <Text fill="#9cc0d9" layoutX="204.0" layoutY="53.0" lineSpacing="10.0" stroke="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-underline: dashed;" text="Text" underline="true">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+         </children>
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor></Pane>
+   </bottom>
 </BorderPane>

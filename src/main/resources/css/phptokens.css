@@ -16,6 +16,20 @@
 
 .php-class {
     -fx-fill: #00BCAF;
+    -fx-stroke: #00BCAF;
+}
+
+.font-size {
+    -fx-font-size: 20px;
+}
+
+.syntax-error {
+    -fx-border-color: transparent transparent red transparent;
+    -fx-border-style: dashed;
+}
+
+.not-found {
+    -fx-background-color: #CFCA77;
 }
 
 .php-extends-class {

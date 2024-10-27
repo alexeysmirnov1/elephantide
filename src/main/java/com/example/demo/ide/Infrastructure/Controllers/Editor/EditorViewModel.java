@@ -42,6 +42,8 @@ public class EditorViewModel extends EditorView {
 
     @FXML
     public void initialize() {
+        super.initialize();
+
         this.initProjectDiscover(this.project);
     }
 
