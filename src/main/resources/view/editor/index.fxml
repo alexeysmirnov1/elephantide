@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.*?>
@@ -18,21 +17,25 @@
                   <Font size="16.0" />
                </font>
             </Label>
-            <StackPane VBox.vgrow="ALWAYS">
+            <StackPane alignment="TOP_LEFT" VBox.vgrow="ALWAYS">
                <children>
-                  <HBox maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
+                  <StackPane fx:id="editorPane" alignment="TOP_LEFT">
                      <children>
-                     <VirtualizedScrollPane HBox.hgrow="ALWAYS">
-                        <content>
-                           <StyleClassedTextArea fx:id="codeEditor" cacheShape="false" centerShape="false" onKeyTyped="#updateFile" pickOnBounds="false" scaleShape="false" styleClass="editor" wrapText="true" VBox.vgrow="ALWAYS">
-                              <padding>
-                                 <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-                              </padding>
-                           </StyleClassedTextArea>
-                        </content>
-                     </VirtualizedScrollPane>
+                        <HBox maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
+                           <children>
+                           <VirtualizedScrollPane HBox.hgrow="ALWAYS">
+                              <content>
+                                 <StyleClassedTextArea fx:id="codeEditor" cacheShape="false" centerShape="false" onKeyTyped="#updateFile" pickOnBounds="false" scaleShape="false" styleClass="editor" wrapText="true" VBox.vgrow="ALWAYS">
+                                    <padding>
+                                       <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                    </padding>
+                                 </StyleClassedTextArea>
+                              </content>
+                           </VirtualizedScrollPane>
+                           </children>
+                        </HBox>
                      </children>
-                  </HBox>
+                  </StackPane>
                   <HBox fx:id="discoverBox" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER" StackPane.alignment="TOP_LEFT">
                      <children>
                         <ScrollPane style="-fx-background-color: transparent;">
@@ -91,21 +94,15 @@
       </HBox>
    </top>
    <bottom>
-      <Pane fx:id="editorPane" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+<!--      <Pane fx:id="editorPane" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">-->
+      <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="71.0" layoutY="33.0" style="-fx-border-style: dashed; -fx-font: red;" text="Label" textFill="#cf7878">
-               <font>
-                  <Font size="20.0" />
-               </font></Label>
-            <Line endX="100.0" layoutX="115.0" layoutY="78.0" startX="-100.0" stroke="#c72c2c" strokeDashOffset="10.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" />
-            <Text fill="#9cc0d9" layoutX="204.0" layoutY="53.0" lineSpacing="10.0" stroke="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-underline: dashed;" text="Text" underline="true">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Text>
+            <Line endX="100.0" layoutX="115.0" layoutY="78.0" startX="-100.0" stroke="#c72c2c" strokeDashOffset="10.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#cbd7627d" height="24.0" layoutX="35.0" layoutY="14.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
          </children>
-         <cursor>
-            <Cursor fx:constant="TEXT" />
-         </cursor></Pane>
+<!--         <cursor>-->
+<!--            <Cursor fx:constant="TEXT" />-->
+<!--         </cursor>-->
+      </Pane>
    </bottom>
 </BorderPane>

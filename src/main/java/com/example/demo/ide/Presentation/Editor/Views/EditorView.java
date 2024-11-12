@@ -8,17 +8,17 @@ import com.example.demo.ide.Domain.Editor.Entities.Tab;
 import com.example.demo.ide.Domain.Editor.Services.ContentStylist;
 import com.example.demo.ide.Domain.Editor.Services.ExtensionIconFactory;
 import com.example.demo.ide.Domain.Editor.VO.FixedList;
+import com.example.demo.ide.Presentation.Editor.UI.Components.ClassNotFound;
 import com.example.demo.ide.Presentation.Editor.UI.Components.Directory;
+import com.example.demo.ide.Presentation.Editor.UI.Components.SyntaxError;
 import com.example.demo.ide.UI.Stage;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Paint;
-import javafx.scene.text.Text;
 import org.fxmisc.richtext.StyleClassedTextArea;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -45,23 +45,15 @@ public abstract class EditorView {
     protected HBox discoverBox;
 
     @FXML
-    protected Pane editorPane;
+    protected StackPane editorPane;
 
     @FXML
     public void initialize() {
-        Label classText = new Label("MyClass");
-        classText.setLayoutX(20);
-        classText.setLayoutY(40);
-        classText.setTextFill(Paint.valueOf("00BCAF"));
-        classText.getStyleClass().add("php-class");
-        classText.getStyleClass().add("font-size");
-        classText.getStyleClass().add("syntax-error");
-        classText.getStyleClass().add("not-found");
+        SyntaxError error = new SyntaxError(3, 50, 100);
+        this.editorPane.getChildren().add(error);
 
-        //todo при наведении мышью делать переход в класс или метод
-        classText.getOnMouseEntered();
-
-        this.editorPane.getChildren().add(classText);
+        ClassNotFound notFound = new ClassNotFound(10, 30, 40);
+        this.editorPane.getChildren().add(notFound);
     }
 
     public void showProject() {
