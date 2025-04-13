@@ -8,7 +8,7 @@ public class ClassNotFound extends Rectangle {
         super(0,0, length, 24);
 
         this.setTranslateX(start);
-        this.setTranslateY(line * 20);
+        this.setTranslateY(line);
 
         this.setFill(Paint.valueOf("cbd7627d"));
     }

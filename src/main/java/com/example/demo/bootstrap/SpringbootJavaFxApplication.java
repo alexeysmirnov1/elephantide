@@ -1,6 +1,7 @@
 package com.example.demo.bootstrap;
 
 import com.example.demo.DemoApplication;
+import com.example.demo.ide.editor.EditorIntegration;
 import javafx.application.Application;
 import javafx.application.HostServices;
 import javafx.application.Platform;
@@ -12,6 +13,8 @@ import org.springframework.context.support.GenericApplicationContext;
 
 public class SpringbootJavaFxApplication extends Application {
     private ConfigurableApplicationContext context;
+
+    private EditorIntegration editor;
 
     @Override
     public void init() throws Exception {
@@ -34,10 +37,14 @@ public class SpringbootJavaFxApplication extends Application {
     public void start(Stage primaryStage) throws Exception {
         this.context.getBeanFactory().registerSingleton("primaryStage", primaryStage);
         this.context.publishEvent(new StageReadyEvent(primaryStage));
+
+        editor = new EditorIntegration();
+        editor.initialize();
     }
 
     @Override
     public void stop() throws Exception {
+        this.editor.shutdown();
         this.context.close();
         Platform.exit();
     }

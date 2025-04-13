@@ -13,7 +13,7 @@
 .editor {
     -fx-background-color: #00141E;
     -fx-font-family: Consolas;
-    -fx-font-size: 24;
+    -fx-font-size: 20;
     -fx-text-fill: #FFFFFF;
     -fx-highlight-fill: #00FF00;
 }

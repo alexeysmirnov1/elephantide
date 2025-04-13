@@ -7,6 +7,7 @@
 <?import javafx.scene.text.*?>
 <?import org.fxmisc.flowless.*?>
 <?import org.fxmisc.richtext.*?>
+<?import com.example.demo.ide.editor.CodeEditor?>
 
 <BorderPane prefHeight="700.0" prefWidth="1000.0" styleClass="base" stylesheets="@../../css/editor.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.ide.Infrastructure.Controllers.Editor.EditorViewModel">
 <center>
@@ -19,23 +20,20 @@
             </Label>
             <StackPane alignment="TOP_LEFT" VBox.vgrow="ALWAYS">
                <children>
-                  <StackPane fx:id="editorPane" alignment="TOP_LEFT">
-                     <children>
-                        <HBox maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
-                           <children>
-                           <VirtualizedScrollPane HBox.hgrow="ALWAYS">
-                              <content>
-                                 <StyleClassedTextArea fx:id="codeEditor" cacheShape="false" centerShape="false" onKeyTyped="#updateFile" pickOnBounds="false" scaleShape="false" styleClass="editor" wrapText="true" VBox.vgrow="ALWAYS">
-                                    <padding>
-                                       <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-                                    </padding>
-                                 </StyleClassedTextArea>
-                              </content>
-                           </VirtualizedScrollPane>
-                           </children>
-                        </HBox>
-                     </children>
-                  </StackPane>
+<!--                  <StackPane fx:id="editorPane" alignment="TOP_LEFT">-->
+<!--                     <children>-->
+<!--                        <VirtualizedScrollPane HBox.hgrow="ALWAYS">-->
+<!--                           <content>-->
+<!--                              <StyleClassedTextArea fx:id="codeEditor" cacheShape="false" centerShape="false" onKeyTyped="#updateFile" pickOnBounds="false" scaleShape="false" styleClass="editor" wrapText="true" VBox.vgrow="ALWAYS">-->
+<!--                                 <padding>-->
+<!--                                    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />-->
+<!--                                 </padding>-->
+<!--                              </StyleClassedTextArea>-->
+<!--                           </content>-->
+<!--                        </VirtualizedScrollPane>-->
+<!--                     </children>-->
+<!--                  </StackPane>-->
+                  <CodeEditor fx:id="codeEditor"/>
                   <HBox fx:id="discoverBox" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER" StackPane.alignment="TOP_LEFT">
                      <children>
                         <ScrollPane style="-fx-background-color: transparent;">
@@ -93,16 +91,4 @@
          </children>
       </HBox>
    </top>
-   <bottom>
-<!--      <Pane fx:id="editorPane" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">-->
-      <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <children>
-            <Line endX="100.0" layoutX="115.0" layoutY="78.0" startX="-100.0" stroke="#c72c2c" strokeDashOffset="10.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#cbd7627d" height="24.0" layoutX="35.0" layoutY="14.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
-         </children>
-<!--         <cursor>-->
-<!--            <Cursor fx:constant="TEXT" />-->
-<!--         </cursor>-->
-      </Pane>
-   </bottom>
 </BorderPane>

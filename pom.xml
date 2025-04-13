@@ -92,6 +92,12 @@
 			<artifactId>guava</artifactId>
 			<version>32.1.3-jre</version>
 		</dependency>
+
+		<dependency>
+			<groupId>org.eclipse.lsp4j</groupId>
+			<artifactId>org.eclipse.lsp4j</artifactId>
+			<version>0.21.0</version>
+		</dependency>
 	</dependencies>
 
 	<build>

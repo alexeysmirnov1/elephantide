@@ -5,21 +5,17 @@ import com.example.demo.ide.Domain.Editor.Entities.Files.StyledTokenizedFile;
 import com.example.demo.ide.Domain.Editor.Entities.Files.TokenizedFile;
 import com.example.demo.ide.Domain.Editor.Entities.Project;
 import com.example.demo.ide.Domain.Editor.Entities.Tab;
-import com.example.demo.ide.Domain.Editor.Services.ContentStylist;
 import com.example.demo.ide.Domain.Editor.Services.ExtensionIconFactory;
 import com.example.demo.ide.Domain.Editor.VO.FixedList;
-import com.example.demo.ide.Presentation.Editor.UI.Components.ClassNotFound;
 import com.example.demo.ide.Presentation.Editor.UI.Components.Directory;
-import com.example.demo.ide.Presentation.Editor.UI.Components.SyntaxError;
 import com.example.demo.ide.UI.Stage;
+import com.example.demo.ide.editor.CodeEditor;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import org.fxmisc.richtext.StyleClassedTextArea;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ConfigurableApplicationContext;
 
@@ -30,14 +26,11 @@ public abstract class EditorView {
     @Autowired
     protected Stage stage;
 
-    @Autowired
-    private ContentStylist stylist;
-
     @FXML
     protected HBox tabPanel;
 
     @FXML
-    protected StyleClassedTextArea codeEditor;
+    protected CodeEditor codeEditor;
 
     @FXML
     protected VBox projectDiscover;
@@ -45,15 +38,8 @@ public abstract class EditorView {
     protected HBox discoverBox;
 
     @FXML
-    protected StackPane editorPane;
-
-    @FXML
     public void initialize() {
-        SyntaxError error = new SyntaxError(3, 50, 100);
-        this.editorPane.getChildren().add(error);
-
-        ClassNotFound notFound = new ClassNotFound(10, 30, 40);
-        this.editorPane.getChildren().add(notFound);
+        this.codeEditor.onKeyTyped(event -> this.updateFile());
     }
 
     public void showProject() {
@@ -68,6 +54,8 @@ public abstract class EditorView {
 
     protected abstract void chooseTab(String filePath);
 
+    protected abstract void updateFile();
+
     protected void initProjectDiscover(Project project) {
         for(java.io.File file: project.files()) {
             HBox component = this.makeComponentFromFile(file);
@@ -77,17 +65,15 @@ public abstract class EditorView {
     }
 
     protected void updateEditor(File file) {
+        System.out.println("editor updated");
         TokenizedFile tokenizedFile = new TokenizedFile(file);
         StyledTokenizedFile styledTokenizedFile = new StyledTokenizedFile(tokenizedFile);
 
-        int caretCurrentPosition = this.codeEditor.getCaretPosition();
+//        int caretCurrentPosition = this.codeEditor.getCaretPosition();
 
-        this.stylist.styling(
-            this.codeEditor,
-            styledTokenizedFile
-        );
+        this.codeEditor.setText(styledTokenizedFile);
 
-        this.codeEditor.moveTo(caretCurrentPosition);
+//        this.codeEditor.moveTo(caretCurrentPosition);
     }
 
     protected void updateTabs(FixedList<Tab> tabs, Tab current) {
