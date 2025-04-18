@@ -3,7 +3,6 @@ package com.example.demo.ide.editor;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.nio.file.Paths;
 
 public class PhpActorLauncher {
     private Process phpActorProcess;
@@ -14,7 +13,8 @@ public class PhpActorLauncher {
             ".\\src\\main\\resources\\external\\modules\\php\\bin\\8_1\\win\\php",
             ".\\src\\main\\resources\\external\\modules\\php\\phpactor.phar",
             "language-server",
-            "--address=127.0.0.1:9999"
+//            "--address=127.0.0.1:9999",
+            "-vvv"
         );
 
         pb.redirectError(ProcessBuilder.Redirect.INHERIT);

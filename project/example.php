@@ -21,7 +21,6 @@ class User extends Model implements HasMedia, Serializable
 
         $surname = DB::table('users')->first()->surname;
         $this->last_name = $surname;
-	
 
         return $this->name;
     }

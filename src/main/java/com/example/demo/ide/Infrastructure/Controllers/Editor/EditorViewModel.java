@@ -6,6 +6,7 @@ import com.example.demo.ide.Domain.Editor.Entities.Project;
 import com.example.demo.ide.Domain.Editor.Entities.Tab;
 import com.example.demo.ide.Domain.Editor.VO.FixedList;
 import com.example.demo.ide.Presentation.Editor.Views.EditorView;
+import com.example.demo.ide.editor.EditorIntegration;
 import javafx.fxml.FXML;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -14,6 +15,10 @@ import org.springframework.stereotype.Component;
 public class EditorViewModel extends EditorView {
     @Autowired
     private FileIndexContract fileIndex;
+
+    @Autowired
+    private EditorIntegration phpActor;
+    private EditorIntegration editor;
 
     private FixedList<Tab> tabs = new FixedList<>(5);
 
@@ -44,6 +49,9 @@ public class EditorViewModel extends EditorView {
     public void initialize() {
         super.initialize();
 
+        editor = new EditorIntegration();
+        editor.initialize();
+
         this.initProjectDiscover(this.project);
     }
 
@@ -66,6 +74,11 @@ public class EditorViewModel extends EditorView {
         } else {
             this.chooseTab(filePath);
         }
+
+//        this.phpActor.completion(filePath);
+//        EditorIntegration editor = new EditorIntegration();
+//        editor.initialize();
+        editor.completion(filePath);
     }
 
     protected void chooseTab(String filePath) {

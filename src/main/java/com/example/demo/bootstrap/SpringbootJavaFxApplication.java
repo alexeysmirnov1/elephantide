@@ -14,7 +14,7 @@ import org.springframework.context.support.GenericApplicationContext;
 public class SpringbootJavaFxApplication extends Application {
     private ConfigurableApplicationContext context;
 
-    private EditorIntegration editor;
+//    private EditorIntegration editor;
 
     @Override
     public void init() throws Exception {
@@ -38,13 +38,14 @@ public class SpringbootJavaFxApplication extends Application {
         this.context.getBeanFactory().registerSingleton("primaryStage", primaryStage);
         this.context.publishEvent(new StageReadyEvent(primaryStage));
 
-        editor = new EditorIntegration();
-        editor.initialize();
+//        editor = new EditorIntegration();
+//        editor.initialize();
+//
+//        this.context.getBeanFactory().registerSingleton("phpActor", editor);
     }
 
     @Override
     public void stop() throws Exception {
-        this.editor.shutdown();
         this.context.close();
         Platform.exit();
     }
