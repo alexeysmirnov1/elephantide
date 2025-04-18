@@ -17,20 +17,20 @@ import java.io.IOException;
 public class DemoApplication {
 
 	public static void main(String[] args) throws IOException {
-//		GetServices services = new GetServices();
-//		services.run();
-
-		GetStatuses statuses = new GetStatuses();
-		statuses.run();
-
-//		StopService stop = new StopService();
-//		stop.run();
-
-		UpService up = new UpService("app");
-		up.run();
-
-		statuses.run();
-//		Application.launch(SpringbootJavaFxApplication.class, args);
+////		GetServices services = new GetServices();
+////		services.run();
+//
+//		GetStatuses statuses = new GetStatuses();
+//		statuses.run();
+//
+////		StopService stop = new StopService();
+////		stop.run();
+//
+//		UpService up = new UpService("app");
+//		up.run();
+//
+//		statuses.run();
+		Application.launch(SpringbootJavaFxApplication.class, args);
 	}
 
 	@Bean

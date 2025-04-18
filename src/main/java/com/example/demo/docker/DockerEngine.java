@@ -1,11 +1,19 @@
 package com.example.demo.docker;
 
-public class DockerEngine {
-    public void upServices() {
+import java.util.ArrayList;
 
+public class DockerEngine {
+    private ArrayList<DockerService> services;
+
+    public DockerEngine() {
+        this.services = new ArrayList<>();
+    }
+
+    public void upServices() {
+        this.services.forEach(service -> service.up());
     }
 
     public void downServices() {
-
+        this.services.forEach(service -> service.stop());
     }
 }

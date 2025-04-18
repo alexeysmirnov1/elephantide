@@ -89,4 +89,15 @@
          </children>
       </HBox>
    </top>
+   <bottom>
+      <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="docker_up" mnemonicParsing="false" onMouseClicked="#docker_up" text="Start Services" />
+            <Button fx:id="docker_down" layoutY="30.0" mnemonicParsing="false" onMouseClicked="#docker_down" text="Stop Services" />
+            <Button fx:id="docker_up_app" layoutX="137.0" mnemonicParsing="false" onMouseClicked="#docker_up_app" text="Start App Service" />
+            <Button fx:id="docker_stop_app" layoutX="137.0" layoutY="30.0" mnemonicParsing="false" onMouseClicked="#docker_stop_app" text="Stop App Service" />
+            <Button fx:id="docker_status" layoutX="63.0" layoutY="76.0" mnemonicParsing="false" onMouseClicked="#docker_status" text="Status" />
+         </children>
+      </Pane>
+   </bottom>
 </BorderPane>
