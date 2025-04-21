@@ -8,7 +8,6 @@ public class PhpActorLauncher {
     private Process phpActorProcess;
 
     public void start() throws IOException {
-//        System.out.println(PhpActorLauncher.class.getClassLoader().getResource("/external/modules/php/bin/8_1/win/php.exe"));
         ProcessBuilder pb = new ProcessBuilder(
             ".\\src\\main\\resources\\external\\modules\\php\\bin\\8_1\\win\\php",
             ".\\src\\main\\resources\\external\\modules\\php\\phpactor.phar",

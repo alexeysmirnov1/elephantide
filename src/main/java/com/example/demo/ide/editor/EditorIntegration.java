@@ -35,18 +35,13 @@ public class EditorIntegration {
                 launcher.startListening();
 
                 InitializeParams params = new InitializeParams();
-//                params.setRootUri(Paths.get("").toUri().toString());
                 params.setRootUri("c:\\OSPanel\\domains\\site");
-//                params.setRootPath("c:\\OSPanel\\domains\\site");
-//                params.setLocale("c:\\OSPanel\\domains\\site");
 
                 ClientCapabilities clientCaps = new ClientCapabilities();
                 clientCaps.setTextDocument(new TextDocumentClientCapabilities());
                 clientCaps.setWorkspace(new WorkspaceClientCapabilities());
                 params.setCapabilities(clientCaps);
 
-//                CompletableFuture<InitializeResult> initFuture = server.initialize(params);
-//                server.initialize(params).get(5, TimeUnit.SECONDS);
                 server.initialize(params).get();
 
                 Platform.runLater(() -> {
