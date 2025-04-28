@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.ide.Infrastructure.Controllers.Editor.DatabaseViewModel" fx:id="databases">
+   <children>
+      <TabPane tabClosingPolicy="UNAVAILABLE" HBox.hgrow="ALWAYS" fx:id="tabPane">
+        <tabs>
+          <Tab text="Untitled Tab 1" />
+        </tabs>
+      </TabPane>
+   </children>
+</HBox>
