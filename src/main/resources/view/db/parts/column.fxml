@@ -25,7 +25,7 @@
                 <Insets right="10.0" />
             </HBox.margin>
         </ImageView>
-        <Label textFill="WHITE" fx:id="fileName">
+        <Label textFill="WHITE" fx:id="columnName">
             <font>
                 <Font name="JetBrains Mono ExtraLight" size="24.0" />
             </font>

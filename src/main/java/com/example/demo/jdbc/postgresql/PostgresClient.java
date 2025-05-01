@@ -15,7 +15,7 @@ public class PostgresClient {
     }
 
     public Connection getConnection() throws SQLException, ClassNotFoundException {
-        String url = "jdbc:postgresql://localhost:5432/" + this.postgresDBName;
+        String url = "jdbc:postgresql://localhost:5454/" + this.postgresDBName;
 
         Class.forName("org.postgresql.Driver");
 
@@ -69,11 +69,11 @@ public class PostgresClient {
         return tables;
     }
 
-    public ArrayList<String> getColumnOfTable(String tableName) throws SQLException, ClassNotFoundException {
-        return this.getColumnOfTable("public", tableName);
+    public ArrayList<String> getColumnsOfTable(String tableName) throws SQLException, ClassNotFoundException {
+        return this.getColumnsOfTable("public", tableName);
     }
 
-    public ArrayList<String> getColumnOfTable(String schemaName, String tableName) throws SQLException, ClassNotFoundException {
+    public ArrayList<String> getColumnsOfTable(String schemaName, String tableName) throws SQLException, ClassNotFoundException {
         var connection = this.getConnection();
         Statement statement = connection.createStatement();
 
@@ -114,13 +114,12 @@ public class PostgresClient {
             "LIMIT 100;");
 
         ArrayList<Integer> rows = new ArrayList<>();
-        ArrayList<String> columns = this.getColumnOfTable(schemaName, tableName);
+        ArrayList<String> columns = this.getColumnsOfTable(schemaName, tableName);
         while (resultSet.next())
         {
             rows.add(resultSet.getInt("id"));
             String row = "";
             for (String column: columns) {
-//                System.out.println(resultSet.getInt("id"));
                 row += resultSet.getString(column) + " ";
             }
             System.out.println(row);

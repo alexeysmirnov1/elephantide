@@ -37,7 +37,7 @@ public class ClientTest {
     public void testColumns() throws SQLException, ClassNotFoundException {
         var client = this.getClient();
 
-        assertFalse(client.getColumnOfTable("users").isEmpty());
+        assertFalse(client.getColumnsOfTable("users").isEmpty());
     }
 
     @Test
@@ -50,8 +50,8 @@ public class ClientTest {
     private PostgresClient getClient() {
         return new PostgresClient(
             "mdat",
-            "postgres",
-            "postgres"
+            "mdat",
+            "mdat123"
         );
     }
 }

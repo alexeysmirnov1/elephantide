@@ -2,15 +2,29 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="200.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="300.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.jdbc.postgresql.Presentation.Controllers.ConnectionsViewModel">
    <children>
-      <ToolBar prefHeight="40.0" prefWidth="200.0">
+      <ToolBar prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: transparent;">
         <items>
-          <Button mnemonicParsing="false" text="+" />
-            <Button mnemonicParsing="false" text="reload" />
+          <Button graphicTextGap="0.0" mnemonicParsing="false" style="-fx-background-color: grey;" text="+" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font size="21.0" />
+               </font></Button>
+            <Button mnemonicParsing="false" style="-fx-background-color: grey;" text="reload" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font></Button>
         </items>
       </ToolBar>
-      <ScrollPane prefWidth="200.0" VBox.vgrow="ALWAYS" />
+      <ScrollPane fitToHeight="true" fitToWidth="true" style="-fx-background-color: transparent;" VBox.vgrow="ALWAYS">
+         <content>
+            <VBox fx:id="databeseConections" style="-fx-background-color: black;" HBox.hgrow="ALWAYS">
+               <children>
+               </children>
+            </VBox>
+         </content>
+      </ScrollPane>
    </children>
 </VBox>
