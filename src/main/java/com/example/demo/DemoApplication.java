@@ -1,10 +1,6 @@
 package com.example.demo;
 
 import com.example.demo.bootstrap.SpringbootJavaFxApplication;
-import com.example.demo.docker.commands.GetServices;
-import com.example.demo.docker.commands.GetStatuses;
-import com.example.demo.docker.commands.StopService;
-import com.example.demo.docker.commands.UpService;
 import javafx.application.Application;
 import net.rgielen.fxweaver.core.FxWeaver;
 import net.rgielen.fxweaver.spring.SpringFxWeaver;

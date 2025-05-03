@@ -1,9 +1,9 @@
-package com.example.demo.docker.commands;
+package com.example.demo.docker.Infrastructure.Commands;
 
-import java.io.BufferedReader;
-import java.io.File;
+import com.example.demo.docker.Domain.Entities.Service;
+
 import java.io.IOException;
-import java.io.InputStreamReader;
+import java.util.ArrayList;
 
 public class StopService extends Command {
     private String service;
@@ -12,7 +12,7 @@ public class StopService extends Command {
         this.service = service;
     }
 
-    public String run() throws IOException {
+    public ArrayList<Service> run() throws IOException {
         return this.execute("docker compose stop " + this.service);
     }
 }

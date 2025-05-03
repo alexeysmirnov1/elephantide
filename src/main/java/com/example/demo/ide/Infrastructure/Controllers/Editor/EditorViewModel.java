@@ -1,6 +1,6 @@
 package com.example.demo.ide.Infrastructure.Controllers.Editor;
 
-import com.example.demo.docker.commands.*;
+import com.example.demo.docker.Presentation.UI.DockerServicesTable;
 import com.example.demo.ide.Common.Contracts.FileIndexContract;
 import com.example.demo.ide.Domain.Editor.Entities.Files.File;
 import com.example.demo.ide.Domain.Editor.Entities.Project;
@@ -8,11 +8,9 @@ import com.example.demo.ide.Domain.Editor.Entities.Tab;
 import com.example.demo.ide.Domain.Editor.VO.FixedList;
 import com.example.demo.ide.Presentation.Editor.Views.EditorView;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
+import javafx.scene.layout.GridPane;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
-import java.io.IOException;
 
 @Component
 public class EditorViewModel extends EditorView {
@@ -46,7 +44,10 @@ public class EditorViewModel extends EditorView {
 
     @FXML
     public void initialize() {
-        this.initProjectDiscover(this.project);
+//        this.initProjectDiscover(this.project);
+
+        GridPane tableGrid = (GridPane) this.context.getBean(DockerServicesTable.class).load();
+        this.docker.getChildren().add(tableGrid);
     }
 
     public void updateFile() {
@@ -79,50 +80,4 @@ public class EditorViewModel extends EditorView {
             }
         }
     }
-
-    @FXML
-    protected void docker_up() {
-        UpAllServices services = new UpAllServices();
-        try {
-            services.run();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    };
-    @FXML
-    protected void docker_down() {
-        StopAllServices stop = new StopAllServices();
-        try {
-            stop.run();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    };
-    @FXML
-    protected void docker_up_app() {
-        UpService stop = new UpService("app");
-        try {
-            stop.run();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    };
-    @FXML
-    protected void docker_stop_app() {
-        StopService stop = new StopService("app");
-        try {
-            stop.run();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    };
-    @FXML
-    protected void docker_status() {
-        GetStatuses statuses = new GetStatuses();
-        try {
-            statuses.run();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    };
 }

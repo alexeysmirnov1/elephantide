@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<GridPane fx:id="table" hgap="10.0" prefWidth="1000.0" vgap="10.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.docker.Presentation.DockerViewModel">
+<columnConstraints>
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+</columnConstraints>
+<rowConstraints>
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+</rowConstraints>
+<children>
+    <Label text="SERVICE" textFill="WHITE">
+        <font>
+            <Font size="20.0" />
+        </font>
+    </Label>
+    <Label text="IMAGE" textFill="WHITE" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS">
+        <font>
+            <Font size="20.0" />
+        </font>
+    </Label>
+    <Label text="STATUS" textFill="WHITE" GridPane.columnIndex="2">
+        <font>
+            <Font size="20.0" />
+        </font>
+    </Label>
+    <Label text="PORTS" textFill="WHITE" GridPane.columnIndex="3">
+        <font>
+            <Font size="20.0" />
+        </font>
+    </Label>
+<!--    <Label text="queue-modified_urls-0" textFill="WHITE" GridPane.rowIndex="1">-->
+<!--        <font>-->
+<!--            <Font size="18.0" />-->
+<!--        </font>-->
+<!--    </Label>-->
+<!--    <Label maxWidth="450.0" prefWidth="450.0" text="registry.gitlab.com/flagstudio/mdat:latest_unit_dev" textFill="WHITE" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1">-->
+<!--        <font>-->
+<!--            <Font size="18.0" />-->
+<!--        </font>-->
+<!--    </Label>-->
+<!--    <Label text="Up 23 hours (healthy)" textFill="WHITE" GridPane.columnIndex="2" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="1">-->
+<!--        <font>-->
+<!--            <Font size="18.0" />-->
+<!--        </font>-->
+<!--    </Label>-->
+<!--    <Label text="0.0.0.0:80-&gt;80/tcp, [::]:80-&gt;80/tcp, 0.0.0.0:443-&gt;443/tcp, [::]:443-&gt;443/tcp" textFill="WHITE" GridPane.columnIndex="3" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1">-->
+<!--        <font>-->
+<!--            <Font size="18.0" />-->
+<!--        </font>-->
+<!--    </Label>-->
+</children>
+</GridPane>

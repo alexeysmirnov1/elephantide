@@ -1,7 +1,9 @@
 package com.example.demo.docker;
 
+import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 
+@Component
 public class DockerEngine {
     private ArrayList<DockerService> services;
 
