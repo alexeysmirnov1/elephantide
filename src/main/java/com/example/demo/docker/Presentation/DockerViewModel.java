@@ -5,6 +5,8 @@ import com.example.demo.docker.Infrastructure.Commands.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Paint;
+import javafx.scene.text.TextAlignment;
 import org.springframework.stereotype.Component;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -25,6 +27,8 @@ public class DockerViewModel {
             for (Service service: services) {
                 Label name = new Label();
                 name.setText(service.name);
+                name.setTextFill(Paint.valueOf("white"));
+                name.setTextAlignment(TextAlignment.LEFT);
 
                 Label image = new Label();
                 image.setText(service.image);

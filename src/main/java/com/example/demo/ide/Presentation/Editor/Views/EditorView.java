@@ -13,6 +13,7 @@ import com.example.demo.ide.UI.Stage;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
@@ -43,7 +44,7 @@ public abstract class EditorView {
     @FXML
     protected HBox discoverBox;
     @FXML
-    protected Pane docker;
+    protected ScrollPane docker;
 
     public void showProject() {
         this.discoverBox.setTranslateX(0);

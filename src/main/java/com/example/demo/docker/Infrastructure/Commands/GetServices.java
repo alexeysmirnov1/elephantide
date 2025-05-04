@@ -7,15 +7,21 @@ import java.io.InputStreamReader;
 
 public class GetServices {
     public String run() throws IOException {
-        Process process = new ProcessBuilder()
+        Process services = new ProcessBuilder()
             .command("bash", "-c", "docker compose config --services")
             .directory(new File("/root/projects/mdat"))
             .redirectErrorStream(true)
             .start();
 
+        Process images = new ProcessBuilder()
+                .command("bash", "-c", "docker compose config --images")
+                .directory(new File("/root/projects/mdat"))
+                .redirectErrorStream(true)
+                .start();
+
         StringBuilder result = new StringBuilder();
 
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()))) {
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(services.getInputStream()))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 result.append("").append(line);

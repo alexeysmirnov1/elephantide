@@ -44,10 +44,10 @@ public class EditorViewModel extends EditorView {
 
     @FXML
     public void initialize() {
-//        this.initProjectDiscover(this.project);
+        this.initProjectDiscover(this.project);
 
         GridPane tableGrid = (GridPane) this.context.getBean(DockerServicesTable.class).load();
-        this.docker.getChildren().add(tableGrid);
+        this.docker.setContent(tableGrid);
     }
 
     public void updateFile() {

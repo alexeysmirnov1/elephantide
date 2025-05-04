@@ -8,13 +8,13 @@
 <?import org.fxmisc.flowless.*?>
 <?import org.fxmisc.richtext.*?>
 
-<BorderPane prefHeight="700.0" prefWidth="1000.0" styleClass="base" stylesheets="@../../css/editor.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.ide.Infrastructure.Controllers.Editor.EditorViewModel">
+<BorderPane prefHeight="700.0" prefWidth="1000.0" styleClass="base" stylesheets="@../../css/editor.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.ide.Infrastructure.Controllers.Editor.EditorViewModel">
 <center>
       <VBox>
          <children>
             <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="30.0" maxWidth="1.7976931348623157E308" prefHeight="30.0" styleClass="project-name" text="fitlar" textAlignment="CENTER" textFill="#00db7c">
                <font>
-                  <Font size="16.0" />
+                  <Font name="Inter Regular" size="16.0" />
                </font>
             </Label>
             <StackPane VBox.vgrow="ALWAYS">
@@ -34,7 +34,7 @@
                   </HBox>
                   <HBox fx:id="discoverBox" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER" StackPane.alignment="TOP_LEFT">
                      <children>
-                        <ScrollPane style="-fx-background-color: transparent;">
+                        <ScrollPane fitToWidth="true" pannable="true" style="-fx-background-color: transparent;" vmax="100.0">
                            <content>
                               <VBox fx:id="projectDiscover" maxWidth="1.7976931348623157E308" prefHeight="200.0" styleClass="bg" HBox.hgrow="ALWAYS">
                                  <children>
@@ -90,165 +90,15 @@
       </HBox>
    </top>
    <bottom>
-      <Pane fx:id="docker">
-<!--         <children>-->
-<!--            <VBox alignment="TOP_CENTER" visible="false">-->
-<!--               <children>-->
-<!--                  <HBox VBox.vgrow="ALWAYS">-->
-<!--                     <children>-->
-<!--                        <Label text="SERVICE" textFill="WHITE">-->
-<!--                           <font>-->
-<!--                              <Font size="20.0" />-->
-<!--                           </font>-->
-<!--                           <HBox.margin>-->
-<!--                              <Insets left="10.0" right="10.0" />-->
-<!--                           </HBox.margin>-->
-<!--                        </Label>-->
-<!--                        <Label layoutX="10.0" layoutY="10.0" text="IMAGE" textFill="WHITE">-->
-<!--                           <font>-->
-<!--                              <Font size="20.0" />-->
-<!--                           </font>-->
-<!--                           <HBox.margin>-->
-<!--                              <Insets left="10.0" right="10.0" />-->
-<!--                           </HBox.margin>-->
-<!--                        </Label>-->
-<!--                        <Label layoutX="118.0" layoutY="10.0" text="STATUS" textFill="WHITE">-->
-<!--                           <font>-->
-<!--                              <Font size="20.0" />-->
-<!--                           </font>-->
-<!--                           <HBox.margin>-->
-<!--                              <Insets left="10.0" right="10.0" />-->
-<!--                           </HBox.margin>-->
-<!--                        </Label>-->
-<!--                        <Label layoutX="202.0" layoutY="10.0" text="PORTS" textFill="WHITE">-->
-<!--                           <font>-->
-<!--                              <Font size="20.0" />-->
-<!--                           </font>-->
-<!--                           <HBox.margin>-->
-<!--                              <Insets left="10.0" right="10.0" />-->
-<!--                           </HBox.margin>-->
-<!--                        </Label>-->
-<!--                     </children>-->
-<!--                  </HBox>-->
-<!--                  <HBox layoutX="10.0" layoutY="10.0">-->
-<!--                     <children>-->
-<!--                        <Label text="app" textFill="WHITE">-->
-<!--                           <font>-->
-<!--                              <Font size="20.0" />-->
-<!--                           </font>-->
-<!--                           <HBox.margin>-->
-<!--                              <Insets left="10.0" right="10.0" />-->
-<!--                           </HBox.margin>-->
-<!--                        </Label>-->
-<!--                        <Label layoutX="10.0" layoutY="10.0" text="registry.gitlab.com/flagstudio/mdat:latest_unit_dev" textFill="WHITE">-->
-<!--                           <font>-->
-<!--                              <Font size="20.0" />-->
-<!--                           </font>-->
-<!--                           <HBox.margin>-->
-<!--                              <Insets left="10.0" right="10.0" />-->
-<!--                           </HBox.margin>-->
-<!--                        </Label>-->
-<!--                        <Label layoutX="118.0" layoutY="10.0" text="STATUS" textFill="WHITE">-->
-<!--                           <font>-->
-<!--                              <Font size="20.0" />-->
-<!--                           </font>-->
-<!--                           <HBox.margin>-->
-<!--                              <Insets left="10.0" right="10.0" />-->
-<!--                           </HBox.margin>-->
-<!--                        </Label>-->
-<!--                        <Label layoutX="202.0" layoutY="10.0" text="PORTS" textFill="WHITE">-->
-<!--                           <font>-->
-<!--                              <Font size="20.0" />-->
-<!--                           </font>-->
-<!--                           <HBox.margin>-->
-<!--                              <Insets left="10.0" right="10.0" />-->
-<!--                           </HBox.margin>-->
-<!--                        </Label>-->
-<!--                     </children>-->
-<!--                  </HBox>-->
-<!--                  <HBox layoutX="10.0" layoutY="39.0" />-->
-<!--               </children>-->
-<!--            </VBox>-->
-<!--            <GridPane hgap="10.0" prefWidth="1000.0" vgap="10.0">-->
-<!--              <columnConstraints>-->
-<!--                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />-->
-<!--                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />-->
-<!--               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />-->
-<!--               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />-->
-<!--              </columnConstraints>-->
-<!--              <rowConstraints>-->
-<!--                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />-->
-<!--                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />-->
-<!--                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />-->
-<!--              </rowConstraints>-->
-<!--               <children>-->
-<!--                  <Label text="SERVICE" textFill="WHITE">-->
-<!--                     <font>-->
-<!--                        <Font size="20.0" />-->
-<!--                     </font>-->
-<!--                  </Label>-->
-<!--                  <Label text="IMAGE" textFill="WHITE" GridPane.columnIndex="1">-->
-<!--                     <font>-->
-<!--                        <Font size="20.0" />-->
-<!--                     </font>-->
-<!--                  </Label>-->
-<!--                  <Label text="STATUS" textFill="WHITE" GridPane.columnIndex="2">-->
-<!--                     <font>-->
-<!--                        <Font size="20.0" />-->
-<!--                     </font>-->
-<!--                  </Label>-->
-<!--                  <Label text="PORTS" textFill="WHITE" GridPane.columnIndex="3">-->
-<!--                     <font>-->
-<!--                        <Font size="20.0" />-->
-<!--                     </font>-->
-<!--                  </Label>-->
-<!--                  <Label text="queue-modified_urls-0" textFill="WHITE" GridPane.rowIndex="1">-->
-<!--                     <font>-->
-<!--                         <Font size="18.0" />-->
-<!--                     </font>-->
-<!--                  </Label>-->
-<!--                  <Label maxWidth="450.0" prefWidth="450.0" text="registry.gitlab.com/flagstudio/mdat:latest_unit_dev" textFill="WHITE" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1">-->
-<!--                     <font>-->
-<!--                        <Font size="18.0" />-->
-<!--                     </font>-->
-<!--                  </Label>-->
-<!--                  <Label text="Up 23 hours (healthy)" textFill="WHITE" GridPane.columnIndex="2" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="1">-->
-<!--                     <font>-->
-<!--                        <Font size="18.0" />-->
-<!--                     </font>-->
-<!--                  </Label>-->
-<!--                  <Label text="0.0.0.0:80-&gt;80/tcp, [::]:80-&gt;80/tcp, 0.0.0.0:443-&gt;443/tcp, [::]:443-&gt;443/tcp" textFill="WHITE" GridPane.columnIndex="3" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1">-->
-<!--                     <font>-->
-<!--                        <Font size="18.0" />-->
-<!--                     </font>-->
-<!--                  </Label>-->
-<!--               </children>-->
-<!--            </GridPane>-->
-<!--            <TableView fx:id="table" style="-fx-background-color: transparent;">-->
-<!--              <columns>-->
-<!--                <TableColumn fx:id="service" editable="false" prefWidth="150.0" sortable="false" text="SERVICE" />-->
-<!--                <TableColumn prefWidth="75.0" text="C2" />-->
-<!--              </columns>-->
-<!--               <columnResizePolicy>-->
-<!--                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />-->
-<!--               </columnResizePolicy>-->
-<!--            </TableView>-->
-<!--            <VBox alignment="TOP_CENTER"-->
-<!--                  xmlns="http://javafx.com/javafx"-->
-<!--                  xmlns:fx="http://javafx.com/fxml">-->
-<!--               <children>-->
-<!--                  <TableView fx:id="table" style="-fx-background-color: transparent;">-->
-<!--                     <columns>-->
-<!--                        <TableColumn fx:id="service" editable="false" prefWidth="150.0" sortable="false" text="SERVICE" />-->
-<!--                        <TableColumn prefWidth="75.0" text="C2" />-->
-<!--                     </columns>-->
-<!--                     <columnResizePolicy>-->
-<!--                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />-->
-<!--                     </columnResizePolicy>-->
-<!--                  </TableView>-->
-<!--               </children>-->
-<!--            </VBox>-->
-<!--         </children>-->
-      </Pane>
+      <VBox BorderPane.alignment="CENTER">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="30.0" maxWidth="1.7976931348623157E308" prefHeight="30.0" styleClass="project-name" text="Docker" textAlignment="CENTER" textFill="#00db7c">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <ScrollPane fx:id="docker" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" maxHeight="300.0" pannable="true" style="-fx-background-color: transparent;" VBox.vgrow="ALWAYS" />
+         </children>
+      </VBox>
    </bottom>
 </BorderPane>

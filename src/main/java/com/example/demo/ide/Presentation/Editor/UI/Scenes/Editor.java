@@ -43,7 +43,10 @@ public class Editor extends Scene {
 
             Parent root = fxmlLoader.load();
 
+            System.out.println(this.width);
+            System.out.println(this.height);
             javafx.scene.Scene scene = new javafx.scene.Scene(root, this.width, this.height);
+            System.out.println(scene.getWidth());
 
             this.afterCreating(scene);
 
