@@ -19,7 +19,7 @@ public class DockerViewModel {
     @FXML
     public void initialize() {
         System.out.println("docker ");
-        var dockerEngine = new GetStatuses();
+        var dockerEngine = new GetServices();
         try {
             ArrayList<Service> services = dockerEngine.run();
 
@@ -28,17 +28,19 @@ public class DockerViewModel {
                 Label name = new Label();
                 name.setText(service.name);
                 name.setTextFill(Paint.valueOf("white"));
-                name.setTextAlignment(TextAlignment.LEFT);
 
                 Label image = new Label();
                 image.setText(service.image);
+                image.setTextFill(Paint.valueOf("white"));
 
                 Label status = new Label();
                 status.setText(service.status);
+                status.setTextFill(Paint.valueOf("white"));
                 status.setOnMouseClicked(event -> System.out.println("change service status (" + service.name + ")"));
 
                 Label ports = new Label();
                 ports.setText(service.ports.toString());
+                ports.setTextFill(Paint.valueOf("white"));
 
                 this.table.addRow(i, name, image, status, ports);
                 i++;

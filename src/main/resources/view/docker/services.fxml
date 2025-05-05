@@ -5,39 +5,51 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<GridPane fx:id="table" hgap="10.0" vgap="10.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.docker.Presentation.DockerViewModel">
+<GridPane fx:id="table" hgap="30.0" vgap="10.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.docker.Presentation.DockerViewModel">
 <columnConstraints>
     <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="150.0" />
-    <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
-    <ColumnConstraints halignment="LEFT" hgrow="NEVER" minWidth="80.0" prefWidth="80.0" />
+    <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" minWidth="10.0" prefWidth="400.0" />
+    <ColumnConstraints halignment="CENTER" hgrow="NEVER" minWidth="80.0" prefWidth="80.0" />
     <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="200.0" />
 </columnConstraints>
 <rowConstraints>
     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
 </rowConstraints>
 <children>
-    <Label text="Name" textFill="WHITE" GridPane.halignment="CENTER">
+    <Label text="Name" textFill="WHITE">
         <font>
             <Font size="18.0" />
         </font>
+         <padding>
+            <Insets left="20.0" />
+         </padding>
+         <GridPane.margin>
+            <Insets />
+         </GridPane.margin>
     </Label>
-    <Label text="Image" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS">
+    <Label text="Image" textFill="WHITE" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS">
         <font>
             <Font size="18.0" />
         </font>
+         <padding>
+            <Insets left="20.0" />
+         </padding>
     </Label>
     <Label text="State" textFill="WHITE" GridPane.columnIndex="2" GridPane.halignment="CENTER">
         <font>
             <Font size="18.0" />
         </font>
     </Label>
-    <Label text="Ports" textFill="WHITE" GridPane.columnIndex="3" GridPane.halignment="CENTER">
+    <Label text="Ports" textFill="WHITE" GridPane.columnIndex="3">
         <font>
             <Font size="18.0" />
         </font>
+         <padding>
+            <Insets left="20.0" />
+         </padding>
     </Label>
 </children>
    <padding>
-      <Insets bottom="20.0" left="20.0" right="20.0" />
+      <Insets bottom="20.0" left="20.0" right="20.0" top="10.0" />
    </padding>
 </GridPane>

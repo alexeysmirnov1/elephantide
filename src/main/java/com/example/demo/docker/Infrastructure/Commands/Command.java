@@ -42,7 +42,7 @@ abstract public class Command {
                     root.getAsJsonObject().get("Service").getAsString(),
                     root.getAsJsonObject().get("Image").getAsString(),
                     root.getAsJsonObject().get("State").getAsString(),
-                    ports
+                    ports.toString()
                 ));
             }
         }
