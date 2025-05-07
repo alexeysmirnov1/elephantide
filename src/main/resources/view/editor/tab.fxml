@@ -25,6 +25,11 @@
                         <Font name="JetBrains Mono Regular" size="16.0" />
                     </font>
                 </Label>
+                <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../images/close_tab.png" />
+                    </image>
+                </ImageView>
             </children>
             <padding>
                 <Insets left="10.0" right="10.0" />

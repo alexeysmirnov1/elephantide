@@ -7,7 +7,10 @@ import com.example.demo.ide.Domain.Editor.Entities.Project;
 import com.example.demo.ide.Domain.Editor.Entities.Tab;
 import com.example.demo.ide.Domain.Editor.VO.FixedList;
 import com.example.demo.ide.Presentation.Editor.Views.EditorView;
+import com.example.demo.jdbc.postgresql.Presentation.UI.Connections;
 import javafx.fxml.FXML;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.scene.layout.GridPane;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -22,6 +25,9 @@ public class EditorViewModel extends EditorView {
     private File currentFile;
 
     private Project project;
+
+    @FXML
+    private Pane right;
 
     public void project(Project project) {
         this.project = project;
@@ -45,6 +51,9 @@ public class EditorViewModel extends EditorView {
     @FXML
     public void initialize() {
         this.initProjectDiscover(this.project);
+
+        VBox connections = (VBox) this.context.getBean(Connections.class).load();
+        this.right.getChildren().add(connections);
 
         GridPane tableGrid = (GridPane) this.context.getBean(DockerServicesTable.class).load();
         this.docker.setContent(tableGrid);

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.text.Font?>
+<?import javafx.geometry.Insets?>
+<VBox
+        alignment="BOTTOM_LEFT"
+        xmlns="http://javafx.com/javafx"
+        xmlns:fx="http://javafx.com/fxml"
+>
+    <children>
+        <HBox alignment="CENTER" fillHeight="false" maxHeight="50.0" prefHeight="50.0" spacing="10.0" styleClass="tab">
+            <children>
+                <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../../images/db/table.png" />
+                    </image>
+                </ImageView>
+                <Label fx:id="title" textFill="WHITE">
+                    <font>
+                        <Font name="JetBrains Mono Regular" size="16.0" />
+                    </font>
+                </Label>
+                <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../../images/close_tab.png" />
+                    </image>
+                </ImageView>
+            </children>
+            <padding>
+                <Insets left="10.0" right="10.0" />
+            </padding>
+        </HBox>
+    </children>
+</VBox>

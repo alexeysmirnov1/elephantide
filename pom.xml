@@ -98,6 +98,12 @@
 			<artifactId>gson</artifactId>
 			<version>2.13.1</version>
 		</dependency>
+
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>42.2.18</version>
+		</dependency>
 	</dependencies>
 
 	<build>

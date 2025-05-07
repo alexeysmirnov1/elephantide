@@ -5,7 +5,7 @@ import com.example.demo.ide.UI.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ConfigurableApplicationContext;
 
-public class Controller {
+public abstract class Controller {
     @Autowired
     protected ConfigurableApplicationContext context;
 
