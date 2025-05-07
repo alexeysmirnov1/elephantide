@@ -6,7 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Paint;
-import javafx.scene.text.TextAlignment;
+import javafx.scene.text.Text;
 import org.springframework.stereotype.Component;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -18,8 +18,8 @@ public class DockerViewModel {
 
     @FXML
     public void initialize() {
-        System.out.println("docker ");
         var dockerEngine = new GetServices();
+
         try {
             ArrayList<Service> services = dockerEngine.run();
 
@@ -33,14 +33,15 @@ public class DockerViewModel {
                 image.setText(service.image);
                 image.setTextFill(Paint.valueOf("white"));
 
+                Text ports = new Text();
+                ports.setText(service.ports);
+//                ports.setTextFill(Paint.valueOf("white"));
+                ports.setFill(Paint.valueOf("white"));
+
                 Label status = new Label();
                 status.setText(service.status);
                 status.setTextFill(Paint.valueOf("white"));
-                status.setOnMouseClicked(event -> System.out.println("change service status (" + service.name + ")"));
-
-                Label ports = new Label();
-                ports.setText(service.ports.toString());
-                ports.setTextFill(Paint.valueOf("white"));
+                status.setOnMouseClicked(event -> this.changeServiceState(service.name, status, ports));
 
                 this.table.addRow(i, name, image, status, ports);
                 i++;
@@ -50,49 +51,75 @@ public class DockerViewModel {
         }
     }
 
-    @FXML
-    protected void docker_up() {
+    private void changeServiceState(String service, Label state, Text ports) {
+        System.out.println("change service status (" + service + ") from " + state.getText());
+
+        switch(state.getText()) {
+            case "exited":
+            case "stopped":
+                state.setText("waiting...");
+                this.dockerUpService(service);
+                state.setText("running");
+                break;
+            case "running":
+                state.setText("waiting...");
+                this.dockerStopService(service);
+                state.setText("stopped");
+                break;
+        }
+
+        this.updateServicesTable(service, ports);
+    }
+
+    private void updateServicesTable(String serviceName, Text ports) {
+        var dockerEngine = new GetServices();
+
+        try {
+            ArrayList<Service> services = dockerEngine.run();
+
+            for (Service service: services) {
+                if(service.name.equals(serviceName)) {
+                    ports.setText(service.ports);
+                }
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    protected void dockerUpAll() {
         UpAllServices services = new UpAllServices();
         try {
             services.run();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-    };
-    @FXML
-    protected void docker_down() {
+    }
+
+    protected void dockerDownAll() {
         StopAllServices stop = new StopAllServices();
         try {
             stop.run();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-    };
-    @FXML
-    protected void docker_up_app() {
-        UpService stop = new UpService("app");
+    }
+
+    protected void dockerUpService(String service) {
+        UpService up = new UpService(service);
+        try {
+            up.run();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    protected void dockerStopService(String service) {
+        StopService stop = new StopService(service);
         try {
             stop.run();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-    };
-    @FXML
-    protected void docker_stop_app() {
-        StopService stop = new StopService("app");
-        try {
-            stop.run();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    };
-    @FXML
-    protected void docker_status() {
-        GetStatuses statuses = new GetStatuses();
-        try {
-            statuses.run();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    };
+    }
 }

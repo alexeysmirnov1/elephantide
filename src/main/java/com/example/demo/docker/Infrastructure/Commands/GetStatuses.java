@@ -7,6 +7,6 @@ import java.util.ArrayList;
 
 public class GetStatuses extends Command {
     public ArrayList<Service> run() throws IOException {
-        return this.execute("docker compose ps --format json");
+        return this.execute("docker compose ps -a --format json");
     }
 }

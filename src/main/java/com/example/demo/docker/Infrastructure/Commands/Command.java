@@ -23,28 +23,28 @@ abstract public class Command {
         BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
         String line;
         while ((line = reader.readLine()) != null) {
-            if(line.startsWith("{")) {
-                JsonElement root = new JsonParser().parse(line);
-
-                ArrayList<String> ports = new ArrayList<>();
-                for (JsonElement jsonPort: root.getAsJsonObject().get("Publishers").getAsJsonArray()) {
-                    String url = jsonPort.getAsJsonObject().get("URL").getAsString();
-                    if(url.startsWith(":")) url = "[" + url + "]";
-
-                    String targetPort = jsonPort.getAsJsonObject().get("TargetPort").getAsString();
-                    String publishedPort = jsonPort.getAsJsonObject().get("PublishedPort").getAsString();
-                    String protocol = jsonPort.getAsJsonObject().get("Protocol").getAsString();
-
-                    ports.add(url + ":" + targetPort + "->" + publishedPort + "/" + protocol);
-                }
-
-                array.add(new Service(
-                    root.getAsJsonObject().get("Service").getAsString(),
-                    root.getAsJsonObject().get("Image").getAsString(),
-                    root.getAsJsonObject().get("State").getAsString(),
-                    ports.toString()
-                ));
-            }
+//            if(line.startsWith("{")) {
+//                JsonElement root = new JsonParser().parse(line);
+//
+//                ArrayList<String> ports = new ArrayList<>();
+//                for (JsonElement jsonPort: root.getAsJsonObject().get("Publishers").getAsJsonArray()) {
+//                    String url = jsonPort.getAsJsonObject().get("URL").getAsString();
+//                    if(url.startsWith(":")) url = "[" + url + "]";
+//
+//                    String targetPort = jsonPort.getAsJsonObject().get("TargetPort").getAsString();
+//                    String publishedPort = jsonPort.getAsJsonObject().get("PublishedPort").getAsString();
+//                    String protocol = jsonPort.getAsJsonObject().get("Protocol").getAsString();
+//
+//                    ports.add(url + ":" + targetPort + "->" + publishedPort + "/" + protocol);
+//                }
+//
+//                array.add(new Service(
+//                    root.getAsJsonObject().get("Service").getAsString(),
+//                    root.getAsJsonObject().get("Image").getAsString(),
+//                    root.getAsJsonObject().get("State").getAsString(),
+//                    ports.toString()
+//                ));
+//            }
         }
 
         return array;

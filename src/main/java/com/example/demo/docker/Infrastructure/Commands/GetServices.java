@@ -54,7 +54,7 @@ public class GetServices {
         Map<String, Map<String, String>> services = new HashMap<>();
 
         Process process = new ProcessBuilder()
-                .command("bash", "-c", "docker compose ps --format json")
+                .command("bash", "-c", "docker compose ps -a --format json")
                 .directory(new File("/root/projects/mdat"))
                 .redirectErrorStream(true)
                 .start();
@@ -87,7 +87,13 @@ public class GetServices {
 
                 Map<String, String> map = new HashMap<>();
                 map.put("state", root.getAsJsonObject().get("State").getAsString());
-                map.put("ports", ports.toString());
+                map.put("ports", String.join(", \n", ports));
+
+//                System.out.println(
+//                        root.getAsJsonObject().get("Service").getAsString()
+//                        + " - " +
+//                        root.getAsJsonObject().get("State").getAsString()
+//                );
 
                 services.put(root.getAsJsonObject().get("Service").getAsString(), map);
             }
