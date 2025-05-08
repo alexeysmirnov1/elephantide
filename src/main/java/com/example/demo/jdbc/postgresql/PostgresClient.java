@@ -32,7 +32,7 @@ public class PostgresClient {
         while (resultSet.next())
         {
             schemas.add(resultSet.getString("schema_name"));
-            System.out.println(resultSet.getString("schema_name"));
+//            System.out.println(resultSet.getString("schema_name"));
         }
 
         resultSet.close();
@@ -60,7 +60,7 @@ public class PostgresClient {
         while (resultSet.next())
         {
             tables.add(resultSet.getString("table_name"));
-            System.out.println(resultSet.getString("table_name"));
+//            System.out.println(resultSet.getString("table_name"));
         }
 
         resultSet.close();
@@ -88,7 +88,7 @@ public class PostgresClient {
         while (resultSet.next())
         {
             columns.add(resultSet.getString("column_name"));
-            System.out.println(resultSet.getString("column_name"));
+//            System.out.println(resultSet.getString("column_name"));
         }
 
         resultSet.close();
@@ -109,9 +109,9 @@ public class PostgresClient {
             "FROM "+schemaName+"."+tableName + " " +
             "LIMIT 100;");
 
-        System.out.println("SELECT * " +
-            "FROM "+schemaName+"."+tableName + " " +
-            "LIMIT 100;");
+//        System.out.println("SELECT * " +
+//            "FROM "+schemaName+"."+tableName + " " +
+//            "LIMIT 100;");
 
         ArrayList<Integer> rows = new ArrayList<>();
         ArrayList<String> columns = this.getColumnsOfTable(schemaName, tableName);
@@ -122,7 +122,7 @@ public class PostgresClient {
             for (String column: columns) {
                 row += resultSet.getString(column) + " ";
             }
-            System.out.println(row);
+//            System.out.println(row);
         }
 
         resultSet.close();

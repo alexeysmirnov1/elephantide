@@ -9,6 +9,7 @@ import com.example.demo.ide.Domain.Editor.VO.FixedList;
 import com.example.demo.ide.Presentation.Editor.Views.EditorView;
 import com.example.demo.jdbc.postgresql.Presentation.UI.Connections;
 import javafx.fxml.FXML;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.layout.GridPane;
@@ -27,7 +28,7 @@ public class EditorViewModel extends EditorView {
     private Project project;
 
     @FXML
-    private Pane right;
+    private ScrollPane right;
 
     public void project(Project project) {
         this.project = project;
@@ -53,7 +54,7 @@ public class EditorViewModel extends EditorView {
         this.initProjectDiscover(this.project);
 
         VBox connections = (VBox) this.context.getBean(Connections.class).load();
-        this.right.getChildren().add(connections);
+        this.right.setContent(connections);
 
         GridPane tableGrid = (GridPane) this.context.getBean(DockerServicesTable.class).load();
         this.docker.setContent(tableGrid);

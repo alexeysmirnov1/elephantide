@@ -78,8 +78,8 @@ public class GetServices {
                     String tmpPorts = "";
 
                     if(!url.isEmpty()) tmpPorts += url + ":";
-                    tmpPorts += targetPort;
-                    if(!publishedPort.isEmpty() && !publishedPort.equals("0")) tmpPorts += "->" + publishedPort;
+                    tmpPorts += publishedPort;
+                    if(!targetPort.isEmpty() && !targetPort.equals("0")) tmpPorts += "->" + targetPort;
                     tmpPorts += "/" + protocol;
 
                     ports.add(tmpPorts);
@@ -88,12 +88,6 @@ public class GetServices {
                 Map<String, String> map = new HashMap<>();
                 map.put("state", root.getAsJsonObject().get("State").getAsString());
                 map.put("ports", String.join(", \n", ports));
-
-//                System.out.println(
-//                        root.getAsJsonObject().get("Service").getAsString()
-//                        + " - " +
-//                        root.getAsJsonObject().get("State").getAsString()
-//                );
 
                 services.put(root.getAsJsonObject().get("Service").getAsString(), map);
             }

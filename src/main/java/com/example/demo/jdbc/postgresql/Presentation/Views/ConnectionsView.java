@@ -7,6 +7,7 @@ import com.example.demo.jdbc.postgresql.Presentation.UI.DatabaseConnection;
 import com.example.demo.jdbc.postgresql.Presentation.UI.Schema;
 import com.example.demo.jdbc.postgresql.Presentation.UI.Table;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -26,10 +27,20 @@ public abstract class ConnectionsView {
     @FXML
     private VBox databeseConections;
 
+    @FXML
+    private Button reloadButton;
+
     protected PostgresClient postgresClient;
 
     @FXML
     public void initialize() {
+        this.reloadButton.setOnMouseClicked(event -> this.reloadDBs());
+
+        this.reloadDBs();
+    }
+
+    protected void reloadDBs() {
+        this.databeseConections.getChildren().clear();
         HBox connections = (HBox) this.context.getBean(DatabaseConnection.class).load();
         Label dbName = (Label) connections.lookup("#databaseName");
         dbName.setText("mdat");
@@ -60,9 +71,9 @@ public abstract class ConnectionsView {
             }
 
         } catch (SQLException e) {
-            System.out.println("failed loading schemas");
+            System.out.println("failed loading schemas" + e.getMessage());
         } catch (ClassNotFoundException e) {
-            System.out.println("failed loading schemas");
+            System.out.println("failed loading schemas" + e.getMessage());
         }
     }
 
