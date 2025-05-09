@@ -15,8 +15,8 @@ public class Scene {
 
     protected Resource fxml;
 
-    protected int width = 900;
-    protected int height = 400;
+    protected double width = 900.0;
+    protected double height = 400.0;
 
     public javafx.scene.Scene load() {
         try {
