@@ -3,6 +3,7 @@ package com.example.demo.git.Presentation.Views;
 import com.example.demo.git.Domain.Entities.CommitingFile;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Paint;
@@ -13,6 +14,9 @@ import java.util.ArrayList;
 public class GitView {
     @FXML
     private VBox filesForCommit;
+
+    @FXML
+    private VBox branches;
 
     @FXML
     private TextField commitMessage;
@@ -42,5 +46,16 @@ public class GitView {
 
     protected String getCommitMessage() {
         return this.commitMessage.getText();
+    }
+
+    protected void setBranches(ArrayList<String> branches) {
+        this.branches.getChildren().clear();
+
+        for (String branch: branches) {
+            Label b = new Label();
+            b.setText(branch);
+            b.setTextFill(Paint.valueOf("white"));
+            this.branches.getChildren().add(b);
+        }
     }
 }

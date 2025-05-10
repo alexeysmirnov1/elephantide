@@ -20,6 +20,8 @@ public class GitViewModel extends GitView {
         this.repository = new GitRepository(this.gitPath + "/.git");
 
         this.showFilesForNewCommit(this.repository.status());
+
+        this.setBranches(this.repository.branches());
     }
 
     @FXML

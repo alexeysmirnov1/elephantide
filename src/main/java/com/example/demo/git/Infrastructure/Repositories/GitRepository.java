@@ -3,17 +3,20 @@ package com.example.demo.git.Infrastructure.Repositories;
 import com.example.demo.git.Domain.Entities.CommitingFile;
 import com.example.demo.git.Domain.Values.GitStatus;
 import org.eclipse.jgit.api.Git;
+import org.eclipse.jgit.api.ListBranchCommand;
 import org.eclipse.jgit.api.Status;
 import org.eclipse.jgit.api.errors.GitAPIException;
 import org.eclipse.jgit.blame.BlameResult;
 import org.eclipse.jgit.diff.RawText;
 import org.eclipse.jgit.lib.PersonIdent;
+import org.eclipse.jgit.lib.Ref;
 import org.eclipse.jgit.lib.Repository;
 import org.eclipse.jgit.revwalk.RevCommit;
 import org.eclipse.jgit.storage.file.FileRepositoryBuilder;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import static org.hibernate.type.descriptor.java.DateTypeDescriptor.DATE_FORMAT;
 
@@ -135,5 +138,25 @@ public class GitRepository {
                 + ": " + rawText.getString(i)
             );
         }
+    }
+
+    public ArrayList<String> branches() {
+        List<Ref> result = null;
+
+        try {
+            result = git.branchList().call();
+        } catch (GitAPIException e) {
+            System.out.println(e.getMessage());
+            throw new RuntimeException(e);
+        }
+
+        ArrayList<String> branches = new ArrayList<>();
+
+        for (Ref ref: result) {
+            String branchName = ref.getName();
+            branches.add(branchName.substring(branchName.lastIndexOf("/") + 1));
+        }
+
+        return branches;
     }
 }
