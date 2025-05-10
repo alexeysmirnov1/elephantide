@@ -23,8 +23,8 @@ public class Editor extends Scene {
 
     public Editor(@Value("classpath:/view/editor/index.fxml") Resource resource) {
         this.fxml = resource;
-        this.width = 1300;
-        this.height = 800;
+        this.width = 1500.0;
+        this.height = 1000.0;
     }
 
     public Editor project(String projectPath) {

@@ -41,10 +41,14 @@ public abstract class EditorView {
 
     @FXML
     protected VBox projectDiscover;
+
     @FXML
     protected HBox discoverBox;
     @FXML
     protected ScrollPane docker;
+
+    @FXML
+    protected VBox left;
 
     public void showProject() {
         this.discoverBox.setTranslateX(0);

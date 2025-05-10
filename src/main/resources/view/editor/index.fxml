@@ -8,7 +8,7 @@
 <?import org.fxmisc.flowless.*?>
 <?import org.fxmisc.richtext.*?>
 
-<BorderPane prefHeight="700.0" prefWidth="1000.0" styleClass="base" stylesheets="@../../css/editor.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.ide.Infrastructure.Controllers.Editor.EditorViewModel">
+<BorderPane prefHeight="1000.0" prefWidth="1500.0" styleClass="base" stylesheets="@../../css/editor.css" xmlns="http://javafx.com/javafx/17.0.2-ae" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.ide.Infrastructure.Controllers.Editor.EditorViewModel">
 <center>
       <VBox>
          <children>
@@ -93,6 +93,9 @@
          </children>
       </VBox>
    </top>
+   <left>
+      <VBox fx:id="left" BorderPane.alignment="CENTER" />
+   </left>
    <right>
       <VBox maxWidth="350.0" BorderPane.alignment="CENTER">
          <children>

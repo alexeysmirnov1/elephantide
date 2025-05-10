@@ -1,5 +1,6 @@
 package com.example.demo.ide.Infrastructure.Controllers.Editor;
 
+import com.example.demo.git.Presentation.UI.Git;
 import com.example.demo.docker.Presentation.UI.DockerServicesTable;
 import com.example.demo.ide.Common.Contracts.FileIndexContract;
 import com.example.demo.ide.Domain.Editor.Entities.Files.File;
@@ -9,9 +10,8 @@ import com.example.demo.ide.Domain.Editor.VO.FixedList;
 import com.example.demo.ide.Presentation.Editor.Views.EditorView;
 import com.example.demo.jdbc.postgresql.Presentation.UI.Connections;
 import javafx.fxml.FXML;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.GridPane;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -52,6 +52,9 @@ public class EditorViewModel extends EditorView {
     @FXML
     public void initialize() {
         this.initProjectDiscover(this.project);
+
+        VBox git = (VBox) this.context.getBean(Git.class).load();
+        this.left.getChildren().add(git);
 
         VBox connections = (VBox) this.context.getBean(Connections.class).load();
         this.right.setContent(connections);
