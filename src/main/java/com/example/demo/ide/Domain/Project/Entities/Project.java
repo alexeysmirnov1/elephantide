@@ -1,5 +1,6 @@
 package com.example.demo.ide.Domain.Project.Entities;
 
+import com.example.demo.git.Infrastructure.Commands.Init;
 import com.example.demo.ide.Domain.Project.Contracts.ComposerJsonStubContract;
 import org.eclipse.jgit.storage.file.FileRepositoryBuilder;
 import java.io.File;
@@ -36,12 +37,6 @@ public class Project {
     }
 
     public void createGit() {
-        try {
-            FileRepositoryBuilder
-                .create(new File(this.project.getPath() + "/.git"))
-                .create();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        Init.run(this.project.getPath());
     }
 }

@@ -5,16 +5,15 @@
 
 <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.git.Presentation.Controllers.GitViewModel">
 <children>
-    <Button mnemonicParsing="false" onAction="#gitCommit" text="Commit" />
-    <Button mnemonicParsing="false" onAction="#gitStatus" text="status" />
-    <Button mnemonicParsing="false" onAction="#gitBlame" text="blame" />
     <Button mnemonicParsing="false" text="fetch" />
-    <Button mnemonicParsing="false" onAction="#gitPush"  text="push" />
-    <Button mnemonicParsing="false" text="rebase" />
-    <Button mnemonicParsing="false" onAction="#initGit" text="init" />
-    <CheckBox mnemonicParsing="false" text="CheckBox" />
-    <Button onAction="#gitMerge" layoutX="10.0" layoutY="88.0" mnemonicParsing="false" text="merge" />
-    <Button onAction="#gitCheckout" layoutX="10.0" layoutY="132.0" mnemonicParsing="false" text="checkout" />
-    <Button onAction="#gitLog" layoutX="10.0" layoutY="132.0" mnemonicParsing="false" text="log" />
+    <Button mnemonicParsing="false" onAction="#gitPush" text="push" />
+    <Button layoutX="10.0" layoutY="132.0" mnemonicParsing="false" onAction="#gitCheckout" text="checkout" />
+    <Button layoutX="10.0" layoutY="132.0" mnemonicParsing="false" onAction="#gitLog" text="log" />
+      <VBox fx:id="filesForCommit" prefHeight="200.0" prefWidth="100.0">
+         <children>
+         </children>
+      </VBox>
+      <TextField fx:id="commitMessage" />
+    <Button mnemonicParsing="false" onAction="#gitCommit" text="Commit" />
 </children>
 </VBox>

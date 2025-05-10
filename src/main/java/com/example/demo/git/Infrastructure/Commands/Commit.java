@@ -1,17 +1,13 @@
 package com.example.demo.git.Infrastructure.Commands;
 
-import org.eclipse.jgit.api.CommitCommand;
 import org.eclipse.jgit.api.errors.GitAPIException;
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
 public class Commit extends GitCommand {
     public Commit(String gitPath) {
         super(gitPath);
-    }
-
-    public void run(String message) {
-        this.run(message, new ArrayList<>(), false);
     }
 
     public void run(String message, ArrayList<String> files, boolean amend) {
@@ -24,11 +20,19 @@ public class Commit extends GitCommand {
             }
             add.call();
 
-            CommitCommand commit = git.commit();
-            commit.setMessage(message);
-            commit.setAll(true);
-            commit.setAmend(amend);
-            commit.call();
+            try {
+                Process process = new ProcessBuilder()
+                        .command("bash", "-c", "git commit -m " + message + " -- " + String.join(" ", files))
+                        .directory(new File(this.gitPath))
+                        .start();
+                try {
+                    process.waitFor();
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         } catch (IOException | GitAPIException e) {
             //todo CommitException
             throw new RuntimeException(e);

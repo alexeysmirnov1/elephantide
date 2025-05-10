@@ -1,5 +1,7 @@
 package com.example.demo.git.Infrastructure.Repositories;
 
+import com.example.demo.git.Domain.Entities.CommitingFile;
+import com.example.demo.git.Domain.Values.GitStatus;
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.Status;
 import org.eclipse.jgit.api.errors.GitAPIException;
@@ -11,6 +13,8 @@ import org.eclipse.jgit.revwalk.RevCommit;
 import org.eclipse.jgit.storage.file.FileRepositoryBuilder;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+
 import static org.hibernate.type.descriptor.java.DateTypeDescriptor.DATE_FORMAT;
 
 public class GitRepository {
@@ -28,7 +32,7 @@ public class GitRepository {
         }
     }
 
-    public void status() {
+    public ArrayList<CommitingFile> status() {
         Status status = null;
 
         try {
@@ -38,27 +42,59 @@ public class GitRepository {
             throw new RuntimeException(e);
         }
 
+        ArrayList<CommitingFile> files = new ArrayList<>();
+
         for (String modified: status.getModified()) {
             System.out.println("Modified file: " + modified);
+            files.add(new CommitingFile(
+                    modified,
+                    GitStatus.MODIFIED
+            ));
+        }
+        for (String modified: status.getChanged()) {
+            System.out.println("Modified file: " + modified);
+            files.add(new CommitingFile(
+                    modified,
+                    GitStatus.MODIFIED
+            ));
         }
         for (String modified: status.getAdded()) {
             System.out.println("added file: " + modified);
-        }
-        for (String modified: status.getChanged()) {
-            System.out.println("changed file: " + modified);
+            files.add(new CommitingFile(
+                    modified,
+                    GitStatus.ADDED
+            ));
         }
         for (String modified: status.getUntracked()) {
             System.out.println("Untracked file: " + modified);
-        }
-        for (String modified: status.getRemoved()) {
-            System.out.println("Removed file: " + modified);
-        }
-        for (String modified: status.getIgnoredNotInIndex()) {
-            System.out.println("Ignored file: " + modified);
+            files.add(new CommitingFile(
+                    modified,
+                    GitStatus.UNTRACKED
+            ));
         }
         for (String modified: status.getConflicting()) {
             System.out.println("Conflicting file: " + modified);
+            files.add(new CommitingFile(
+                    modified,
+                    GitStatus.CONFLICT
+            ));
         }
+        for (String modified: status.getMissing()) {
+            System.out.println("missing file: " + modified);
+            files.add(new CommitingFile(
+                    modified,
+                    GitStatus.DELETED
+            ));
+        }
+        for (String modified: status.getRemoved()) {
+            System.out.println("missing file: " + modified);
+            files.add(new CommitingFile(
+                    modified,
+                    GitStatus.DELETED
+            ));
+        }
+
+        return files;
     }
 
     public void getLog() {
