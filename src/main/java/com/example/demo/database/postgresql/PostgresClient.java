@@ -1,4 +1,4 @@
-package com.example.demo.jdbc.postgresql;
+package com.example.demo.database.postgresql;
 
 import java.sql.*;
 import java.util.ArrayList;

@@ -1,7 +1,7 @@
-package com.example.demo.jdbc.postgresql.Presentation.Controllers;
+package com.example.demo.database.postgresql.Presentation.Controllers;
 
-import com.example.demo.jdbc.postgresql.PostgresClient;
-import com.example.demo.jdbc.postgresql.Presentation.Views.ConnectionsView;
+import com.example.demo.database.postgresql.PostgresClient;
+import com.example.demo.database.postgresql.Presentation.Views.ConnectionsView;
 import javafx.fxml.FXML;
 import org.springframework.stereotype.Component;
 

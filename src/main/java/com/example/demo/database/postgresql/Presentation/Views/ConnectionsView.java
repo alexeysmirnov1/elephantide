@@ -1,11 +1,11 @@
-package com.example.demo.jdbc.postgresql.Presentation.Views;
+package com.example.demo.database.postgresql.Presentation.Views;
 
 import com.example.demo.ide.UI.Stage;
-import com.example.demo.jdbc.postgresql.PostgresClient;
-import com.example.demo.jdbc.postgresql.Presentation.UI.Column;
-import com.example.demo.jdbc.postgresql.Presentation.UI.DatabaseConnection;
-import com.example.demo.jdbc.postgresql.Presentation.UI.Schema;
-import com.example.demo.jdbc.postgresql.Presentation.UI.Table;
+import com.example.demo.database.postgresql.PostgresClient;
+import com.example.demo.database.postgresql.Presentation.UI.Column;
+import com.example.demo.database.postgresql.Presentation.UI.DatabaseConnection;
+import com.example.demo.database.postgresql.Presentation.UI.Schema;
+import com.example.demo.database.postgresql.Presentation.UI.Table;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;

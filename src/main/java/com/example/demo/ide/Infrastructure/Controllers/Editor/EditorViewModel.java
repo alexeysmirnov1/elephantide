@@ -8,7 +8,7 @@ import com.example.demo.ide.Domain.Editor.Entities.Project;
 import com.example.demo.ide.Domain.Editor.Entities.Tab;
 import com.example.demo.ide.Domain.Editor.VO.FixedList;
 import com.example.demo.ide.Presentation.Editor.Views.EditorView;
-import com.example.demo.jdbc.postgresql.Presentation.UI.Connections;
+import com.example.demo.database.postgresql.Presentation.UI.Connections;
 import javafx.fxml.FXML;
 import javafx.scene.layout.VBox;
 import javafx.scene.control.ScrollPane;

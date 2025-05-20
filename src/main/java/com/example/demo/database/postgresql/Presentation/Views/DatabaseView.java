@@ -1,4 +1,4 @@
-package com.example.demo.jdbc.postgresql.Presentation.Views;
+package com.example.demo.database.postgresql.Presentation.Views;
 
 import com.example.demo.ide.UI.Stage;
 import org.springframework.beans.factory.annotation.Autowired;

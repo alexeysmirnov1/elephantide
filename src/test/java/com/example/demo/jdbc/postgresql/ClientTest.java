@@ -1,5 +1,6 @@
 package com.example.demo.jdbc.postgresql;
 
+import com.example.demo.database.postgresql.PostgresClient;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import java.sql.Connection;
