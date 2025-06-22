@@ -62,6 +62,8 @@ public abstract class EditorView {
 
     protected abstract void chooseTab(String filePath);
 
+    protected abstract void closeTab(String filePath);
+
     protected void initProjectDiscover(Project project) {
         for(java.io.File file: project.files()) {
             HBox component = this.makeComponentFromFile(file);
@@ -70,18 +72,14 @@ public abstract class EditorView {
         }
     }
 
-    protected void updateEditor(File file) {
-        TokenizedFile tokenizedFile = new TokenizedFile(file);
-        StyledTokenizedFile styledTokenizedFile = new StyledTokenizedFile(tokenizedFile);
-
-        int caretCurrentPosition = this.codeEditor.getCaretPosition();
+    protected void updateEditor(String content) {
+        this.codeEditor.clear();
+        this.codeEditor.appendText(content);
 
         this.stylist.styling(
             this.codeEditor,
-            styledTokenizedFile
+            content
         );
-
-        this.codeEditor.moveTo(caretCurrentPosition);
     }
 
     protected void updateTabs(FixedList<Tab> tabs, Tab current) {
@@ -96,6 +94,9 @@ public abstract class EditorView {
                 tabComponent.getStyleClass().add("tab-disable");
                 tabComponent.setOnMouseClicked(event -> this.chooseTab(tab.toString()));
             }
+
+            ImageView close = (ImageView) tabComponent.lookup("#closeTab");
+            close.setOnMouseClicked(event -> this.closeTab(tab.toString()));
 
             this.tabPanel.getChildren().add(tabComponent);
         }

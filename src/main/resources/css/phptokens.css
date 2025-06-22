@@ -2,7 +2,7 @@
     -fx-fill: #FFFFFF;
 }
 
-.php-tags {
+.php-tags, .PHPStart {
     -fx-fill: #F92A3E;
 }
 
@@ -18,6 +18,10 @@
     -fx-fill: #00BCAF;
 }
 
+.php-const {
+    -fx-fill: #F92A3E;
+}
+
 .php-extends-class {
     -fx-fill: #00BCAF;
 }
@@ -26,7 +30,7 @@
     -fx-fill: #00BCAF;
 }
 
-.php-keyword {
+.php-keyword, .Use {
     -fx-fill: #F05C5C;
 }
 
@@ -50,6 +54,14 @@
     -fx-fill: #00AEFB;
 }
 
-.php-methods {
+.php-methods, .Label {
     -fx-fill: #00AEFB;
+}
+
+.MultiLineComment, .SingleLineComment, .ShellStyleComment {
+    -fx-fill: #536E74;
+}
+
+.php-string {
+    -fx-fill: #00DB7C;
 }

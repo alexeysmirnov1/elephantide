@@ -23,31 +23,31 @@ public final class TokenizedFile {
 
         boolean openQ = false;
 
-        for(int l = 0; l < this.file.lines().size(); l++) {
-            for (int s = 0; s < this.lineLength(l); s++) {
-                char ch = this.file.lines().get(l).charAt(s);
-
-                if(ch == '\'') {
-                    openQ = !openQ;
-                }
-
-                if(!openQ && this.breakingToken(ch)) {
-                    if (!this.token.equals("")) {
-                        this.addToken(l, s);
-                    }
-
-                    this.addToken(String.valueOf(ch), l, this.lineLength(l));
-                } else {
-                    this.growToken(ch);
-                }
-            }
-
-            if(!this.token.equals("")) {
-                this.addToken(l, this.lineLength(l));
-            }
-
-            this.addToken("\n", l, 1);
-        }
+//        for(int l = 0; l < this.file.lines().size(); l++) {
+//            for (int s = 0; s < this.lineLength(l); s++) {
+//                char ch = this.file.lines().get(l).charAt(s);
+//
+//                if(ch == '\'') {
+//                    openQ = !openQ;
+//                }
+//
+//                if(!openQ && this.breakingToken(ch)) {
+//                    if (!this.token.equals("")) {
+//                        this.addToken(l, s);
+//                    }
+//
+//                    this.addToken(String.valueOf(ch), l, this.lineLength(l));
+//                } else {
+//                    this.growToken(ch);
+//                }
+//            }
+//
+//            if(!this.token.equals("")) {
+//                this.addToken(l, this.lineLength(l));
+//            }
+//
+//            this.addToken("\n", l, 1);
+//        }
 
         return this.tokens;
     }
@@ -257,7 +257,8 @@ public final class TokenizedFile {
     }
 
     private int lineLength(int line) {
-        return this.file.lines().get(line).length();
+        return 0;
+//        return this.file.lines().get(line).length();
     }
 
     private void growToken(char ch) {

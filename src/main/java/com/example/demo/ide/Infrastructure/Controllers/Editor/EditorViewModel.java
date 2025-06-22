@@ -53,26 +53,28 @@ public class EditorViewModel extends EditorView {
     public void initialize() {
         this.initProjectDiscover(this.project);
 
-        VBox git = (VBox) this.context.getBean(Git.class).load();
-        this.left.getChildren().add(git);
-
-        VBox connections = (VBox) this.context.getBean(Connections.class).load();
-        this.right.setContent(connections);
-
-        GridPane tableGrid = (GridPane) this.context.getBean(DockerServicesTable.class).load();
-        this.docker.setContent(tableGrid);
+//        VBox git = (VBox) this.context.getBean(Git.class).load();
+//        this.left.getChildren().add(git);
+//
+//        VBox connections = (VBox) this.context.getBean(Connections.class).load();
+//        this.right.setContent(connections);
+//
+//        GridPane tableGrid = (GridPane) this.context.getBean(DockerServicesTable.class).load();
+//        this.docker.setContent(tableGrid);
     }
 
     public void updateFile() {
         if(!this.codeEditor.getText().isEmpty()) {
             this.currentFile.changeContent(this.codeEditor.getText());
-            this.updateEditor(this.currentFile);
+            this.updateEditor(this.currentFile.content());
         }
     }
 
     protected void openFile(String filePath) {
         this.currentFile = new File(filePath);
-        this.updateEditor(this.currentFile);
+
+        this.updateEditor(this.currentFile.content());
+        this.codeEditor.moveTo(0);
 
         Tab tab = new Tab(this.currentFile);
         if(!this.tabs.contains(tab)) {
@@ -88,8 +90,29 @@ public class EditorViewModel extends EditorView {
         for(Tab tab: this.tabs.getItems()) {
             if(tab.toString().equals(filePath)) {
                 this.currentFile = new File(filePath);
-                this.updateEditor(this.currentFile);
+
+                this.updateEditor(this.currentFile.content());
                 this.updateTabs(this.tabs, tab);
+            }
+        }
+    }
+
+    protected void closeTab(String filePath) {
+        System.out.println("close");
+        for(var i = 0; i < this.tabs.count(); i++) {
+            Tab tab = this.tabs.getItems().get(i);
+
+            if(tab.toString() == filePath) {
+                this.tabs.remove(tab);
+
+                if(i > 0) {
+                    this.chooseTab(this.tabs.getItems().get(i - 1).toString());
+                } else if (this.tabs.count() > 0) {
+                    this.chooseTab(this.tabs.getItems().get(i).toString());
+                } else {
+                    this.updateEditor("");
+                    this.updateTabs(this.tabs, null);
+                }
             }
         }
     }

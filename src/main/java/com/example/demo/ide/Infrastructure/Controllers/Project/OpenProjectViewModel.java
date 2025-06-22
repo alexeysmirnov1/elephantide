@@ -53,9 +53,14 @@ public class OpenProjectViewModel extends AbstractProjectController {
         RecentProject action = this.context.getBean(RecentProject.class);
         ProjectDirectory projectDirectory = action.execute(path);
 
-        this.stage.switchScene(this.context.getBean(Editor.class)
-            .project(projectDirectory.getPath())
-            .load());
+        Editor editor = this.context.getBean(Editor.class);
+        editor.project(projectDirectory.getPath());
+
+        javafx.scene.Scene editorScene = editor.load();
+        this.stage().setWidth(1500);
+        this.stage().setHeight(1000);
+
+        this.stage.switchScene(editorScene);
     }
 
     @FXML

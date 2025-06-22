@@ -104,6 +104,12 @@
 			<artifactId>postgresql</artifactId>
 			<version>42.2.18</version>
 		</dependency>
+
+		<dependency>
+			<groupId>org.antlr</groupId>
+			<artifactId>antlr4</artifactId>
+			<version>4.13.2</version>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -111,6 +117,26 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+
+			<plugin>
+				<groupId>org.antlr</groupId>
+				<artifactId>antlr4-maven-plugin</artifactId>
+				<version>4.13.1</version>
+				<executions>
+					<execution>
+						<id>antlr</id>
+						<goals>
+							<goal>antlr4</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<!-- Дополнительные настройки -->
+					<listener>true</listener>
+					<visitor>true</visitor>
+					<sourceDirectory>${project.basedir}/src/main/antlr4</sourceDirectory>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
