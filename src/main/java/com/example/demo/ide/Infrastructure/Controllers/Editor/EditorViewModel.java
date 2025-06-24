@@ -11,7 +11,6 @@ import com.example.demo.ide.Presentation.Editor.Views.EditorView;
 import com.example.demo.database.postgresql.Presentation.UI.Connections;
 import javafx.fxml.FXML;
 import javafx.scene.layout.VBox;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.GridPane;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -48,6 +47,8 @@ public class EditorViewModel extends EditorView {
 
     @FXML
     public void initialize() {
+        this.codeEditor.setStyle("-fx-highlight-fill: #0096c9; -fx-highlight-text-fill: white;");
+
         this.initProjectDiscover(this.project);
 
         VBox git = (VBox) this.context.getBean(Git.class).load();
@@ -101,7 +102,6 @@ public class EditorViewModel extends EditorView {
     }
 
     protected void closeTab(String filePath) {
-        System.out.println("close");
         for(var i = 0; i < this.tabs.count(); i++) {
             Tab tab = this.tabs.getItems().get(i);
 
@@ -117,6 +117,10 @@ public class EditorViewModel extends EditorView {
                     this.updateTabs(this.tabs, null);
                 }
             }
+        }
+
+        if(this.tabs.count() == 0) {
+            this.codeEditor.setParagraphGraphicFactory(null);
         }
     }
 }

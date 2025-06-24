@@ -8,15 +8,20 @@ import com.example.demo.ide.Domain.Editor.VO.FixedList;
 import com.example.demo.ide.Presentation.Editor.UI.Components.Directory;
 import com.example.demo.ide.UI.Stage;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import org.fxmisc.richtext.LineNumberFactory;
 import org.fxmisc.richtext.StyleClassedTextArea;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ConfigurableApplicationContext;
+
+import java.util.function.IntFunction;
 
 public abstract class EditorView {
     @Autowired
@@ -101,6 +106,8 @@ public abstract class EditorView {
             this.codeEditor,
             content
         );
+
+        this.makeLineNumbers();
     }
 
     protected void updateTabs(FixedList<Tab> tabs, Tab current) {
@@ -174,5 +181,16 @@ public abstract class EditorView {
             fileComponent.setOnMouseClicked(event -> this.open(file.getPath()));
             return fileComponent;
         }
+    }
+
+    private void makeLineNumbers()
+    {
+        IntFunction<Node> numberFactory = LineNumberFactory.get(this.codeEditor);
+        IntFunction<Node> graphicFactory = line -> {
+            HBox hbox = new HBox(numberFactory.apply(line));
+            hbox.setAlignment(Pos.CENTER_LEFT);
+            return hbox;
+        };
+        this.codeEditor.setParagraphGraphicFactory(graphicFactory);
     }
 }

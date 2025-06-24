@@ -2,6 +2,14 @@
    -fx-background-color: transparent;
 }
 
+.styled-text-area .caret {
+    -fx-stroke: white;
+}
+
+.styled-text-area .selection {
+    -fx-fill: #bdb54f; /* Цвет фона выделения */
+}
+
 .base {
     -fx-background-color: #00141E;
 }
@@ -15,7 +23,6 @@
     -fx-font-family: Consolas;
     -fx-font-size: 24;
     -fx-text-fill: #FFFFFF;
-    -fx-highlight-fill: #00FF00;
 }
 
 .top {
