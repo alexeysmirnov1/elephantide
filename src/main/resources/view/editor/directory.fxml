@@ -17,7 +17,7 @@
 <children>
     <VBox alignment="CENTER_LEFT" prefHeight="32.0" HBox.hgrow="ALWAYS">
         <children>
-            <HBox alignment="CENTER_LEFT" prefHeight="32.0" styleClass="discover--item">
+            <HBox fx:id="interactArea" alignment="CENTER_LEFT" prefHeight="32.0" styleClass="discover--item">
                 <children>
                   <ImageView fx:id="icon" fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>

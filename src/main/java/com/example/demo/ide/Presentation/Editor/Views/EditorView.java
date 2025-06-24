@@ -16,6 +16,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import org.fxmisc.flowless.VirtualizedScrollPane;
 import org.fxmisc.richtext.LineNumberFactory;
 import org.fxmisc.richtext.StyleClassedTextArea;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -182,7 +183,8 @@ public abstract class EditorView {
             HBox dirComponent = (HBox) this.context.getBean(Directory.class).load();
             Label label = (Label) dirComponent.lookup("#dirName");
             label.setText(file.getName());
-            label.setOnMouseClicked(event -> this.openCloseDirectory(dirComponent, file));
+            HBox interact = (HBox) dirComponent.lookup("#interactArea");
+            interact.setOnMouseClicked(event -> this.openCloseDirectory(dirComponent, file));
             return dirComponent;
         } else {
             HBox fileComponent = (HBox) this.context.getBean(com.example.demo.ide.Presentation.Editor.UI.Components.File.class).load();

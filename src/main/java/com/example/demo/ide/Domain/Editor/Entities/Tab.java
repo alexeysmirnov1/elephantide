@@ -5,11 +5,16 @@ import com.example.demo.ide.Domain.Editor.Entities.Files.File;
 public class Tab {
     private final File file;
 
-    private int cursorPosition;
-    private String content;
+    private int cursorPosition = 0;
+    private String content = null;
 
     public Tab(File file) {
         this.file = file;
+    }
+
+    public File file()
+    {
+        return this.file;
     }
 
     public String name() {
@@ -31,7 +36,11 @@ public class Tab {
     }
 
     public String getCachedContent() {
-        return this.content;
+        if(this.content != null) {
+            return this.content;
+        }
+
+        return this.file.content();
     }
 
     public int getCachedCursorPosition() {

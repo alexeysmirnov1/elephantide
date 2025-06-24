@@ -79,9 +79,10 @@ public class EditorViewModel extends EditorView {
 
         this.codeEditor.clear();
         this.codeEditor.appendText(this.currentFile.content());
+        this.codeEditor.moveTo(0);
+        System.out.println(this.codeEditor.getCaretPosition());
 
         this.updateEditor(this.currentFile.content());
-        this.codeEditor.moveTo(0, 0);
 
         Tab tab = new Tab(this.currentFile);
         if(!this.tabs.contains(tab)) {
@@ -92,23 +93,32 @@ public class EditorViewModel extends EditorView {
             this.chooseTab(filePath);
         }
 
-        this.codeEditor.moveTo(0, 0);
+        this.codeEditor.requestFollowCaret();
     }
 
     protected void chooseTab(String filePath) {
         for(Tab tab: this.tabs.getItems()) {
+            // сохраняем текущее состояние вкладки
+            if (tab.toString().equals(this.currentFile.path())) {
+                tab.cacheCursor(this.codeEditor.getCaretPosition());
+                tab.cacheContent(this.codeEditor.getText());
+            }
+        }
+        for(Tab tab: this.tabs.getItems()) {
+            //находим новую выбранную вкладку
             if(tab.toString().equals(filePath)) {
-                this.currentFile = new File(filePath);
+                this.currentFile = tab.file();
 
                 this.codeEditor.clear();
-                this.codeEditor.appendText(this.currentFile.content());
+                this.codeEditor.appendText(tab.getCachedContent());
+                this.codeEditor.moveTo(tab.getCachedCursorPosition());
 
-                this.updateEditor(this.currentFile.content());
+                this.updateEditor(tab.getCachedContent());
                 this.updateTabs(this.tabs, tab);
             }
         }
 
-        this.codeEditor.moveTo(0, 0);
+        this.codeEditor.requestFollowCaret();
     }
 
     protected void closeTab(String filePath) {

@@ -2,6 +2,7 @@ package com.example.demo.ide.Domain.Editor.Entities;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Objects;
 
 public class Directory {
@@ -26,7 +27,9 @@ public class Directory {
         ArrayList<File> directories = new ArrayList<>();
         ArrayList<File> files = new ArrayList<>();
 
-        for (File file: Objects.requireNonNull(currentDir.listFiles())) {
+        File[] listFiles = currentDir.listFiles();
+        Arrays.sort(listFiles);
+        for (File file: Objects.requireNonNull(listFiles)) {
             if (file.isDirectory()) {
                 directories.add(file);
             } else {
