@@ -77,8 +77,11 @@ public class EditorViewModel extends EditorView {
     protected void openFile(String filePath) {
         this.currentFile = new File(filePath);
 
+        this.codeEditor.clear();
+        this.codeEditor.appendText(this.currentFile.content());
+
         this.updateEditor(this.currentFile.content());
-        this.codeEditor.moveTo(0);
+        this.codeEditor.moveTo(0, 0);
 
         Tab tab = new Tab(this.currentFile);
         if(!this.tabs.contains(tab)) {
@@ -88,6 +91,8 @@ public class EditorViewModel extends EditorView {
         } else {
             this.chooseTab(filePath);
         }
+
+        this.codeEditor.moveTo(0, 0);
     }
 
     protected void chooseTab(String filePath) {
@@ -95,10 +100,15 @@ public class EditorViewModel extends EditorView {
             if(tab.toString().equals(filePath)) {
                 this.currentFile = new File(filePath);
 
+                this.codeEditor.clear();
+                this.codeEditor.appendText(this.currentFile.content());
+
                 this.updateEditor(this.currentFile.content());
                 this.updateTabs(this.tabs, tab);
             }
         }
+
+        this.codeEditor.moveTo(0, 0);
     }
 
     protected void closeTab(String filePath) {
@@ -120,7 +130,7 @@ public class EditorViewModel extends EditorView {
         }
 
         if(this.tabs.count() == 0) {
-            this.codeEditor.setParagraphGraphicFactory(null);
+            this.clearEditor();
         }
     }
 }

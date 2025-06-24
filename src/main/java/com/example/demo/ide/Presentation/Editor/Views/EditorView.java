@@ -99,9 +99,6 @@ public abstract class EditorView {
     }
 
     protected void updateEditor(String content) {
-        this.codeEditor.clear();
-        this.codeEditor.appendText(content);
-
         this.stylist.styling(
             this.codeEditor,
             content
@@ -157,6 +154,23 @@ public abstract class EditorView {
         }
     }
 
+    protected void makeLineNumbers()
+    {
+        IntFunction<Node> numberFactory = LineNumberFactory.get(this.codeEditor);
+        IntFunction<Node> graphicFactory = line -> {
+            HBox hbox = new HBox(numberFactory.apply(line));
+            hbox.setAlignment(Pos.CENTER_LEFT);
+            return hbox;
+        };
+        this.codeEditor.setParagraphGraphicFactory(graphicFactory);
+    }
+
+    protected void clearEditor()
+    {
+        this.codeEditor.setParagraphGraphicFactory(null);
+        this.codeEditor.clear();
+    }
+
     private void open(String filePath) {
         this.openFile(filePath);
 
@@ -181,16 +195,5 @@ public abstract class EditorView {
             fileComponent.setOnMouseClicked(event -> this.open(file.getPath()));
             return fileComponent;
         }
-    }
-
-    private void makeLineNumbers()
-    {
-        IntFunction<Node> numberFactory = LineNumberFactory.get(this.codeEditor);
-        IntFunction<Node> graphicFactory = line -> {
-            HBox hbox = new HBox(numberFactory.apply(line));
-            hbox.setAlignment(Pos.CENTER_LEFT);
-            return hbox;
-        };
-        this.codeEditor.setParagraphGraphicFactory(graphicFactory);
     }
 }
