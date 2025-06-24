@@ -27,16 +27,13 @@ public class EditorViewModel extends EditorView {
 
     private Project project;
 
-    @FXML
-    private ScrollPane right;
-
     public void project(Project project) {
         this.project = project;
 
-        java.io.File root = new java.io.File(this.project.path());
-        this.indexingProject(root);
+//        java.io.File root = new java.io.File(this.project.path());
+//        this.indexingProject(root);
 
-        this.fileIndex.search("rou");
+//        this.fileIndex.search("rou");
     }
 
     private void indexingProject(java.io.File root) {
@@ -53,14 +50,20 @@ public class EditorViewModel extends EditorView {
     public void initialize() {
         this.initProjectDiscover(this.project);
 
-//        VBox git = (VBox) this.context.getBean(Git.class).load();
-//        this.left.getChildren().add(git);
-//
-//        VBox connections = (VBox) this.context.getBean(Connections.class).load();
-//        this.right.setContent(connections);
-//
-//        GridPane tableGrid = (GridPane) this.context.getBean(DockerServicesTable.class).load();
-//        this.docker.setContent(tableGrid);
+        VBox git = (VBox) this.context.getBean(Git.class).load();
+        this.gitPanel.getChildren().add(git);
+        this.switchGitVisible();
+        this.gitPanel.managedProperty().bind(this.gitPanel.visibleProperty());
+
+        VBox connections = (VBox) this.context.getBean(Connections.class).load();
+        this.db.setContent(connections);
+        this.switchDbVisible();
+        this.dbPanel.managedProperty().bind(this.dbPanel.visibleProperty());
+
+        GridPane tableGrid = (GridPane) this.context.getBean(DockerServicesTable.class).load();
+        this.docker.setContent(tableGrid);
+        this.switchDockerVisible();
+        this.dockerPanel.managedProperty().bind(this.dockerPanel.visibleProperty());
     }
 
     public void updateFile() {

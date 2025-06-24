@@ -94,22 +94,22 @@
       </VBox>
    </top>
    <left>
-      <VBox fx:id="left" BorderPane.alignment="CENTER" />
+      <VBox fx:id="gitPanel" BorderPane.alignment="CENTER" />
    </left>
    <right>
-      <VBox maxWidth="350.0" BorderPane.alignment="CENTER">
+      <VBox fx:id="dbPanel" maxWidth="350.0" BorderPane.alignment="CENTER">
          <children>
             <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="30.0" maxWidth="1.7976931348623157E308" prefHeight="30.0" styleClass="project-name" text="Databases" textAlignment="CENTER" textFill="#00db7c">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <ScrollPane fx:id="right" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" maxHeight="1.7976931348623157E308" pannable="true" style="-fx-background-color: transparent;" VBox.vgrow="ALWAYS" />
+            <ScrollPane fx:id="db" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" maxHeight="1.7976931348623157E308" pannable="true" style="-fx-background-color: transparent;" VBox.vgrow="ALWAYS" />
          </children>
       </VBox>
    </right>
    <bottom>
-      <VBox BorderPane.alignment="CENTER">
+      <VBox fx:id="dockerPanel" BorderPane.alignment="CENTER">
          <children>
             <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="30.0" maxWidth="1.7976931348623157E308" prefHeight="30.0" styleClass="project-name" text="Docker" textAlignment="CENTER" textFill="#00db7c">
                <font>

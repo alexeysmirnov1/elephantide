@@ -1,8 +1,5 @@
 package com.example.demo.ide.Presentation.Editor.Views;
 
-import com.example.demo.ide.Domain.Editor.Entities.Files.File;
-import com.example.demo.ide.Domain.Editor.Entities.Files.StyledTokenizedFile;
-import com.example.demo.ide.Domain.Editor.Entities.Files.TokenizedFile;
 import com.example.demo.ide.Domain.Editor.Entities.Project;
 import com.example.demo.ide.Domain.Editor.Entities.Tab;
 import com.example.demo.ide.Domain.Editor.Services.ContentStylist;
@@ -11,13 +8,11 @@ import com.example.demo.ide.Domain.Editor.VO.FixedList;
 import com.example.demo.ide.Presentation.Editor.UI.Components.Directory;
 import com.example.demo.ide.UI.Stage;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import org.fxmisc.richtext.StyleClassedTextArea;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,14 +39,40 @@ public abstract class EditorView {
 
     @FXML
     protected HBox discoverBox;
-    @FXML
-    protected ScrollPane docker;
 
     @FXML
-    protected VBox left;
+    protected ScrollPane db;
+    @FXML
+    protected VBox dbPanel;
+
+    @FXML
+    protected ScrollPane docker;
+    @FXML
+    protected VBox dockerPanel;
+
+    @FXML
+    protected VBox gitPanel;
 
     public void showProject() {
         this.discoverBox.setTranslateX(0);
+    }
+
+    public void switchDockerVisible() {
+        this.dockerPanel.setVisible(
+            !this.dockerPanel.isVisible()
+        );
+    }
+
+    public void switchDbVisible() {
+        this.dbPanel.setVisible(
+            !this.dbPanel.isVisible()
+        );
+    }
+
+    public void switchGitVisible() {
+        this.gitPanel.setVisible(
+            !this.gitPanel.isVisible()
+        );
     }
 
     public void hideProject() {

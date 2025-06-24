@@ -73,5 +73,29 @@ public class Editor extends Scene {
                 this.controller.hideProject();
             }
         );
+
+        // show db discover
+        scene.getAccelerators().put(
+            new KeyCodeCombination(KeyCode.B, KeyCombination.CONTROL_DOWN, KeyCombination.SHIFT_DOWN),
+            ()-> {
+                this.controller.switchDbVisible();
+            }
+        );
+
+        // show docker discover
+        scene.getAccelerators().put(
+            new KeyCodeCombination(KeyCode.D, KeyCombination.CONTROL_DOWN, KeyCombination.SHIFT_DOWN),
+            ()-> {
+                this.controller.switchDockerVisible();
+            }
+        );
+
+        // show git discover
+        scene.getAccelerators().put(
+            new KeyCodeCombination(KeyCode.G, KeyCombination.CONTROL_DOWN, KeyCombination.SHIFT_DOWN),
+            ()-> {
+                this.controller.switchGitVisible();
+            }
+        );
     }
 }
