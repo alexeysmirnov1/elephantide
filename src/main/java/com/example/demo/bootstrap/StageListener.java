@@ -1,8 +1,9 @@
 package com.example.demo.bootstrap;
 
 import com.example.demo.ide.Presentation.Project.UI.Scenes.Open;
-import com.example.demo.ide.UI.Scenes.Starting.Load;
+import com.example.demo.video.scenes.PHPEditor;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationListener;
@@ -26,8 +27,10 @@ public class StageListener implements ApplicationListener<StageReadyEvent> {
     public void onApplicationEvent(StageReadyEvent stageReadyEvent) {
         Stage stage = stageReadyEvent.getStage();
         stage.setResizable(false);
+        stage.initStyle(StageStyle.TRANSPARENT);
         //todo вернуть стартовый экран
-        stage.setScene(this.applicationContext.getBean(Open.class).load());
+//        stage.setScene(this.applicationContext.getBean(Open.class).load());
+        stage.setScene(this.applicationContext.getBean(PHPEditor.class).load());
         stage.setTitle(this.applicationTitle);
         stage.show();
     }

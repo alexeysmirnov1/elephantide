@@ -11,7 +11,8 @@
 }
 
 .base {
-    -fx-background-color: #00141E;
+    -fx-background-color: #FFFFFF30;
+    -fx-background-radius: 15px;
 }
 
 .bg {
@@ -19,18 +20,19 @@
 }
 
 .editor {
-    -fx-background-color: #00141E;
+    -fx-background-color: transparent;
     -fx-font-family: Consolas;
-    -fx-font-size: 24;
+    -fx-font-size: 20;
     -fx-text-fill: #FFFFFF;
 }
 
 .top {
-    -fx-background-color: #21272E;
+    -fx-background-color: transparent;
+    -fx-background-radius: 15px;
 }
 
 .tab {
-    -fx-background-color: #00141E;
+    -fx-background-color: transparent;
     -fx-background-radius: 10 10 0 0;
 }
 
@@ -48,5 +50,16 @@
 }
 
 .discover--item:hover {
-    -fx-background-color: ffffff10;
+    -fx-background-color: #ffffff10;
 }
+
+.lineno {
+    -fx-background-color: transparent;
+    -fx-border-color: #ffffff30;
+    -fx-border-width: 0 1 0 0;
+    -fx-padding: 0 10px 0 0;
+    -fx-font-size: 20;
+    -fx-text-fill: #ffffffaa;
+    -fx-font-family: "Consolas"
+}
+
