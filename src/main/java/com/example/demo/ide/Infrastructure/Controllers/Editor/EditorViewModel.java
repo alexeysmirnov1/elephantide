@@ -24,7 +24,7 @@ public class EditorViewModel extends EditorView {
 
     private File currentFile;
 
-    private Project project;
+    protected Project project;
 
     public void project(Project project) {
         this.project = project;
@@ -35,15 +35,15 @@ public class EditorViewModel extends EditorView {
 //        this.fileIndex.search("rou");
     }
 
-    private void indexingProject(java.io.File root) {
-        for (java.io.File file: root.listFiles()) {
-            if (file.isFile()) {
-                this.fileIndex.add(file.getPath());
-            } else {
-                this.indexingProject(file);
-            }
-        }
-    }
+//    private void indexingProject(java.io.File root) {
+//        for (java.io.File file: root.listFiles()) {
+//            if (file.isFile()) {
+//                this.fileIndex.add(file.getPath());
+//            } else {
+//                this.indexingProject(file);
+//            }
+//        }
+//    }
 
     @FXML
     public void initialize() {
@@ -70,7 +70,7 @@ public class EditorViewModel extends EditorView {
     public void updateFile() {
         if(!this.codeEditor.getText().isEmpty()) {
             this.currentFile.changeContent(this.codeEditor.getText());
-            this.updateEditor(this.currentFile.content());
+            this.updateEditor(this.currentFile.content(), false);
         }
     }
 
@@ -82,7 +82,7 @@ public class EditorViewModel extends EditorView {
         this.codeEditor.moveTo(0);
         System.out.println(this.codeEditor.getCaretPosition());
 
-        this.updateEditor(this.currentFile.content());
+        this.updateEditor(this.currentFile.content(), true);
 
         Tab tab = new Tab(this.currentFile);
         if(!this.tabs.contains(tab)) {
@@ -113,7 +113,7 @@ public class EditorViewModel extends EditorView {
                 this.codeEditor.appendText(tab.getCachedContent());
                 this.codeEditor.moveTo(tab.getCachedCursorPosition());
 
-                this.updateEditor(tab.getCachedContent());
+                this.updateEditor(tab.getCachedContent(), true);
                 this.updateTabs(this.tabs, tab);
             }
         }
@@ -133,7 +133,7 @@ public class EditorViewModel extends EditorView {
                 } else if (this.tabs.count() > 0) {
                     this.chooseTab(this.tabs.getItems().get(i).toString());
                 } else {
-                    this.updateEditor("");
+                    this.updateEditor("", true);
                     this.updateTabs(this.tabs, null);
                 }
             }

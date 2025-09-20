@@ -59,6 +59,8 @@ public abstract class EditorView {
     @FXML
     protected VBox gitPanel;
 
+    protected Project project;
+
     public void showProject() {
         this.discoverBox.setTranslateX(0);
     }
@@ -99,10 +101,11 @@ public abstract class EditorView {
         }
     }
 
-    protected void updateEditor(String content) {
+    protected void updateEditor(String content, boolean fullScan) {
         this.stylist.styling(
             this.codeEditor,
-            content
+            content,
+            fullScan
         );
 
         this.makeLineNumbers();

@@ -9,7 +9,6 @@ import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.Token;
 import org.fxmisc.richtext.StyleClassedTextArea;
 import org.springframework.stereotype.Component;
-
 import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.Map;
@@ -93,22 +92,25 @@ public final class ContentStylist {
         put(160, "php-const");
     }};
 
-    public void styling(StyleClassedTextArea text, String content) {
+    public void styling(StyleClassedTextArea text, String content, boolean fullScan) {
         CharStream charStream = CharStreams.fromString(content);
 
         PhpLexer lexer = new PhpLexer(charStream);
 
         for (Token token: lexer.getAllTokens()) {
-//            System.out.println("");
-//            System.out.println(token.getText());
-//            System.out.println(token.getType());
-//            System.out.println(this.styles.getOrDefault(token.getType(), "default"));
-
             text.setStyleClass(
                 token.getStartIndex(),
                 token.getStopIndex()+1,
                     this.styles.getOrDefault(token.getType(), "default")
             );
         }
+    }
+
+    private void findStartLine(StyleClassedTextArea text)
+    {
+        String fullText = text.getText();
+        int caretPosition = text.getCaretPosition();
+
+        fullText.lines();
     }
 }

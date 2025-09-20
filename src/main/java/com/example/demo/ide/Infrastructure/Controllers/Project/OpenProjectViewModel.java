@@ -43,9 +43,7 @@ public class OpenProjectViewModel extends AbstractProjectController {
         OpenProject action = this.context.getBean(OpenProject.class);
         ProjectDirectory projectDirectory = action.execute(this.path.getText());
 
-        this.stage.switchScene(this.context.getBean(Editor.class)
-            .project(projectDirectory.getPath())
-            .load());
+        this.switchToEditor(projectDirectory);
     }
 
     @FXML
@@ -53,16 +51,22 @@ public class OpenProjectViewModel extends AbstractProjectController {
         RecentProject action = this.context.getBean(RecentProject.class);
         ProjectDirectory projectDirectory = action.execute(path);
 
+        this.switchToEditor(projectDirectory);
+    }
+
+    @FXML
+    protected void validate() {}
+
+    private void switchToEditor(ProjectDirectory projectDirectory)
+    {
         Editor editor = this.context.getBean(Editor.class);
         editor.project(projectDirectory.getPath());
 
         javafx.scene.Scene editorScene = editor.load();
         this.stage().setWidth(1500);
         this.stage().setHeight(1000);
+        this.stage().setResizable(true);
 
         this.stage.switchScene(editorScene);
     }
-
-    @FXML
-    protected void validate() {}
 }
