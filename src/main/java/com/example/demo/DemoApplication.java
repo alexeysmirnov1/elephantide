@@ -1,6 +1,7 @@
 package com.example.demo;
 
 import com.example.demo.bootstrap.SpringbootJavaFxApplication;
+import com.kieferlam.javafxblur.Blur;
 import javafx.application.Application;
 import net.rgielen.fxweaver.core.FxWeaver;
 import net.rgielen.fxweaver.spring.SpringFxWeaver;
@@ -18,6 +19,7 @@ import com.example.demo.antlr.*;
 public class DemoApplication {
 
 	public static void main(String[] args) throws IOException {
+//        Blur.loadBlurLibrary();
 		Application.launch(SpringbootJavaFxApplication.class, args);
 	}
 

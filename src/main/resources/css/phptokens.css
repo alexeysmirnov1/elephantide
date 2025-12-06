@@ -3,19 +3,23 @@
 }
 
 .php-tags, .PHPStart {
-    -fx-fill: #F92A3E;
+    -fx-fill: #cf3629;
 }
 
 .php-namespace {
-    -fx-fill: #00BCAF;
+    -fx-fill: #4EC9B0;
 }
 
 .php-included-classes {
-    -fx-fill: #00BCAF;
+    -fx-fill: #4EC9B0;
 }
 
 .php-class {
-    -fx-fill: #00BCAF;
+    -fx-fill: #4EC9B0;
+}
+
+.label {
+    -fx-fill: #4EC9B0;
 }
 
 .php-const {
@@ -23,7 +27,7 @@
 }
 
 .php-extends-class {
-    -fx-fill: #00BCAF;
+    -fx-fill: #4EC9B0;
 }
 
 .php-implemented-interfaces {
@@ -31,15 +35,15 @@
 }
 
 .php-keyword, .Use {
-    -fx-fill: #F05C5C;
+    -fx-fill: #579BD5;
 }
 
 .php-modificator {
-    -fx-fill: #F05C5C;
+    -fx-fill: #579BD5;
 }
 
 .php-type {
-    -fx-fill: #F05C5C;
+    -fx-fill: #579BD5;
 }
 
 .php-string-vars {
@@ -51,11 +55,11 @@
 }
 
 .php-functions {
-    -fx-fill: #00AEFB;
+    -fx-fill: #D2D3A5;
 }
 
 .php-methods, .Label {
-    -fx-fill: #00AEFB;
+    -fx-fill: #D2D3A5;
 }
 
 .MultiLineComment, .SingleLineComment, .ShellStyleComment {

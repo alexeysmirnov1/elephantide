@@ -2,6 +2,7 @@ package com.example.demo.bootstrap;
 
 import com.example.demo.ide.Presentation.Project.UI.Scenes.Open;
 import com.example.demo.video.scenes.PHPEditor;
+import com.kieferlam.javafxblur.Blur;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import org.springframework.beans.factory.annotation.Value;
@@ -33,5 +34,6 @@ public class StageListener implements ApplicationListener<StageReadyEvent> {
         stage.setScene(this.applicationContext.getBean(PHPEditor.class).load());
         stage.setTitle(this.applicationTitle);
         stage.show();
+//        Blur.applyBlur(stage, Blur.ACRYLIC);
     }
 }

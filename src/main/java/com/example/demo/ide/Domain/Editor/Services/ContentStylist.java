@@ -85,7 +85,7 @@ public final class ContentStylist {
         put(123, "php-keyword");
         put(128, "php-keyword");
         put(129, "php-keyword");
-        put(225, "Label");
+        put(225, "label");
 
         put(158, "php-const");
         put(159, "php-const");
@@ -98,6 +98,7 @@ public final class ContentStylist {
         PhpLexer lexer = new PhpLexer(charStream);
 
         for (Token token: lexer.getAllTokens()) {
+//            System.out.println(token.getText() + " - " + token.getType() + " - " + this.styles.getOrDefault(token.getType(), "default"));
             text.setStyleClass(
                 token.getStartIndex(),
                 token.getStopIndex()+1,
